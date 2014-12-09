@@ -1,0 +1,121 @@
+/* pure extensions */
+.pure-button {
+  border-radius: 4px;
+}
+
+.pure-button-success,
+.pure-button-error,
+.pure-button-warning,
+.pure-button-secondary {
+    color: white;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.pure-button-success {
+    background: rgb(28, 184, 65); /* this is a green */
+}
+
+.pure-button-error {
+    background: rgb(202, 60, 60); /* this is a maroon */
+}
+
+.pure-button-warning {
+    background: rgb(223, 117, 20); /* this is an orange */
+}
+
+.pure-button-secondary {
+    background: rgb(66, 184, 221); /* this is a light blue */
+}
+
+.pure-button-xsmall {
+    font-size: 70%;
+}
+
+.pure-button-small {
+    font-size: 90% !important;
+}
+
+.pure-button-large {
+    font-size: 110%;
+}
+
+.pure-button-xlarge {
+    font-size: 125%;
+}
+
+
+/* site styling */
+body {
+  text-align: center;
+}
+
+.wrapper {
+  width: 600px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+form.thin {
+  width: 400px;
+  padding-left: 100px;
+}
+
+table {
+  width: 100%;
+}
+
+th {
+  padding: 1em 0;
+  width: 68%;
+}
+
+th:first-child {
+  width: 32%;
+}
+
+label[for=enable-submission] {
+  padding: 0 1em;
+}
+
+#message {
+  height: 1em;
+  text-align: center;
+  color: #00cc00;
+  margin-top: 1em;
+}
+
+#message_content {
+  display: none;
+}
+
+footer {
+  font-size: .8em;
+  font-style: italic;
+  margin-bottom: 2em;
+  margin-top: 2em;
+}
+
+.ascii {
+  padding: .25em 0;
+}
+
+.delete-button {
+  padding: .5em 1em;
+  font-weight: bold;
+}
+
+.hidden {
+  display: none;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+tr:nth-child(2n) td {
+  background: #f2f2f2;
+}

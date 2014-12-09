@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ASCIImoji options</title>
+  <link rel="stylesheet" href="pure-min.css">
+  <link rel="stylesheet" href="options.css">
+  <link rel="shortcut icon" href="../images/icon-48.png">
+</head>
+<body>
+  <img src="../images/logo.png"/>
+
+  <h2>settings</h2>
+  <div class="wrapper">
+    <form class="pure-form pure-form-aligned thin">
+      <fieldset>
+        <div class="pure-control-group">
+          <label for="prefix">emoticon prefix</label>
+          <input id="prefix" type="text" value="(">
+        </div>
+        <div class="pure-control-group">
+          <label for="suffix">emoticon suffix</label>
+          <input id="suffix" type="text" value=")">
+        </div>
+        <div id="message" class="pure-control-group"></div>
+      </fieldset>
+    </form>
+  </div>
+
+  <h2>your ASCIImoji</h2>
+  <div class="wrapper">
+    <form class="pure-form" style="margin-bottom:.25em;">
+      <fieldset>
+        <input type="text" id="add-text" class="pure-input-1-3" placeholder="Text" title="Enter comma-separated words without prefix and suffix">
+        <input type="text" id="add-ascii" class="pure-input-1-3" placeholder="ASCIImoji" title="The emoticons' ASCII representation">
+        <label for="enable-submission" title="Submit your emoticon to ASCIImoji.com so it can be included in future releases">
+            <input id="enable-submission" type="checkbox"> share
+        </label>
+        <button type="button" id="add-emoticon" class="pure-button pure-button-success pure-button-small fr">add</button>
+      </fieldset>
+    </form>
+    <table id="user-list" class="pure-table pure-table-horizontal">
+      <thead>
+        <tr>
+          <th>Text</th>
+          <th>ASCIImoji</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <br>
+
+  <h2>default ASCIImoji</h2>
+  <div class="wrapper">
+    <table id="default-list" class="pure-table pure-table-horizontal">
+      <thead>
+        <tr>
+          <th>Text</th>
+          <th>ASCIImoji</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <footer>
+    by <a href="http://hpcodecraft.me" target="_new">hpcodecraft</a> 2013-2014
+  </footer>
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/asciimoji.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>
