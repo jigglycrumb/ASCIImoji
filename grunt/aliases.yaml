@@ -1,0 +1,9 @@
+default:
+  - 'clean:dist'
+  - 'copy'
+  - 'concat'
+  - 'cssmin'
+  - 'replace'
+  - 'uglify'
+  - 'compress'
+  - 'clean:postbuild'
