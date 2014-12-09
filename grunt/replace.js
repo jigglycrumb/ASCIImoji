@@ -1,5 +1,5 @@
 module.exports = {
-  browser: {
+  all: {
     options: {
       patterns: [
         { match: 'app', replacement: '<%= package.name %>' },
