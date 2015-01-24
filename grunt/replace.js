@@ -8,10 +8,12 @@ module.exports = {
       ]
     },
     files: [{
-      expand: true,
-      cwd: 'dist',
-      src: [ '**/*' ],
-      dest: 'dist'
+      src: 'dist/homepage/index.html',
+      dest: 'dist/homepage/index.html'
+    },
+    {
+      src: 'dist/chrome-extension/manifest.json',
+      dest: 'dist/chrome-extension/manifest.json'
     }]
   }
 }
