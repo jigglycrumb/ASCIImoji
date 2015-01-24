@@ -6,7 +6,7 @@ The repository also contains a jQuery plugin for super easy usage.
 
 **Features**
 
-* support for currently 105 different built-in emoticons/symbols
+* support for currently 132 different built-in emoticons/symbols
 * support for additional self-defined emoticons
 * delimiters of the emoticon keywords can be configured (*defaults to brackets ()*)
 * jQuery plugin
