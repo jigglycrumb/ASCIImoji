@@ -47,17 +47,27 @@
 /* site styling */
 body {
   text-align: center;
+  font-size: .95rem;
+  line-height: 150%;
+}
+
+a, a:hover, a:active, a:visited {
+  color: #32cd32;
 }
 
 .wrapper {
-  width: 600px;
+  position: relative;
+  width: 800px;
   margin: 0 auto;
   text-align: left;
 }
 
-form.thin {
-  width: 400px;
-  padding-left: 100px;
+header {
+  text-align: center;
+}
+
+i {
+  color: #888;
 }
 
 table {
@@ -78,10 +88,9 @@ label[for=enable-submission] {
 }
 
 #message {
-  height: 1em;
-  text-align: center;
+  height: 2em;
   color: #00cc00;
-  margin-top: 1em;
+  margin-bottom: 1em;
 }
 
 #message_content {
@@ -95,8 +104,13 @@ footer {
   margin-top: 2em;
 }
 
+footer > div:nth-child(2) {
+  text-align: right;
+}
+
 .ascii {
   padding: .25em 0;
+  font-size: 1.3rem;
 }
 
 .delete-button {

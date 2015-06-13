@@ -1,4 +1,4 @@
-$(function() {
+$(function() { // document.ready
 
   var storage = {
     settings: {},
@@ -44,7 +44,11 @@ $(function() {
     $('#suffix').val(storage.settings.suffix);
     $('#enable-submission').prop('checked',storage.settings.submission_enabled);
 
-    displayEmoticons( $('#user-list'), storage.dictionary, true );
+    if(Object.getOwnPropertyNames(storage.dictionary).length > 0) {
+      $('#no-custom-emoticons').remove();
+      displayEmoticons( $('#user-list'), storage.dictionary, true );
+    }
+
     displayEmoticons( $('#default-list'), asciimoji() );
   }
 
@@ -73,7 +77,7 @@ $(function() {
     storage.settings.prefix = $('#prefix').val();
     storage.settings.suffix = $('#suffix').val();
     chrome.storage.sync.set(storage, function() {
-      $('#message').append('<span id="message_content">Settings saved.</span>');
+      $('#message').html('<span id="message_content">Settings saved.</span>');
       $('#message_content').fadeIn('slow');
       setTimeout(function(){
         $('#message_content').fadeOut('slow');
@@ -87,7 +91,7 @@ $(function() {
         ascii = $('#add-ascii').val();
 
     if(words.length > 0 && ascii.length > 0) {
-      words.forEach(function(word){
+      words.map(function(word){
         word = word.trim();
       });
 
@@ -100,6 +104,8 @@ $(function() {
       chrome.storage.sync.set(storage, function() {
         $('#add-text').val('');
         $('#add-ascii').val('');
+        $('#no-custom-emoticons').remove();
+
         addRow(storage.settings, $('#user-list'), hash, words, ascii, true );
 
         // handle submission
@@ -131,4 +137,7 @@ $(function() {
     storage.settings.submission_enabled = $(this).prop('checked');
     chrome.storage.sync.set(storage);
   });
+
+  // write the current year to the footer copyright message
+  $('#current-year').text(new Date().getFullYear());
 });

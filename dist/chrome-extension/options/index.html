@@ -1,75 +1,121 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>ASCIImoji options</title>
-  <link rel="stylesheet" href="pure-min.css">
-  <link rel="stylesheet" href="options.css">
-  <link rel="shortcut icon" href="../images/icon-48.png">
-</head>
-<body>
-  <img src="../images/logo.png"/>
+  <head>
+    <meta charset="UTF-8">
+    <title>ASCIImoji Options</title>
+    <link rel="stylesheet" href="pure-min.css">
+    <link rel="stylesheet" href="options.css">
+    <link rel="shortcut icon" href="../images/icon-48.png">
+  </head>
+  <body>
+    <div class="wrapper">
 
-  <h2>settings</h2>
-  <div class="wrapper">
-    <form class="pure-form pure-form-aligned thin">
-      <fieldset>
-        <div class="pure-control-group">
-          <label for="prefix">emoticon prefix</label>
-          <input id="prefix" type="text" value="(">
+      <header>
+        <img src="../images/logo.png"/>
+      </header>
+
+      <h2>What´s this good for?</h2>
+
+      <p>
+        <i>
+          ASCIImoji enables support for Unicode emoticons on every website your are visiting. To use them, just type the keywords as listed in the tables below into an web text box and ASCIImoji will convert it to the corresponding emoticon.
+        </i>
+      </p>
+
+
+      <h2>Settings</h2>
+
+      <p>
+        <i>
+          Here you can set the prefix and suffix needed to trigger the emoticon conversion. These settings are automatically updated when you change them (see the "You type" column in the tables below)
+        </i>
+      </p>
+
+      <form class="pure-form pure-form-stacked">
+        <fieldset>
+          <div class="pure-g">
+            <div class="pure-u-1-2">
+              <label for="prefix">Emoticon prefix</label>
+              <input id="prefix" class="pure-input-2-3" type="text" value="(">
+            </div>
+
+            <div class="pure-u-1-2">
+              <label for="suffix">Emoticon suffix</label>
+              <input id="suffix" class="pure-input-2-3" type="text" value=")">
+            </div>
+          </div>
+        </fieldset>
+      </form>
+
+      <div id="message"></div>
+
+
+      <h2>Your Custom Emoticons</h2>
+
+      <p>
+        <i>
+          Use the form below to add your own emoticons to the collection. You can also overwrite the built-ins by using keywords that are already used. Seperate multiple keywords with commas, like so: "hello,ohai,wave"<br>
+          If the box "share" is checked, the developer will get an email with the keywords and emoticon you entered to include it in the next release.
+        </i>
+      </p>
+
+      <form class="pure-form" style="margin-bottom:.25em;">
+        <fieldset>
+          <input type="text" id="add-text" class="pure-input-1-3" placeholder="Keywords, e.g. happy" title="Enter comma-separated words without prefix and suffix">
+          <input type="text" id="add-ascii" class="pure-input-1-3" placeholder="Your emoticon" title="The Unicode for your emoticon">
+          <label for="enable-submission" title="Submit your emoticon to ASCIImoji.com so it can be included in future releases">
+              <input id="enable-submission" type="checkbox"> share
+          </label>
+          <button type="button" id="add-emoticon" class="pure-button pure-button-success pure-button-small fr">add</button>
+        </fieldset>
+      </form>
+
+      <table id="user-list" class="pure-table pure-table-horizontal">
+        <thead>
+          <tr>
+            <th>You type</th>
+            <th>You get</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr id="no-custom-emoticons">
+            <td colspan="2">You haven´t defined any custom emoticons yet.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <br>
+
+
+      <h2>Built-in Emoticons</h2>
+
+      <p>
+        <i>And finally, a list of all the built-in emoticons for your reference.</i>
+      </p>
+
+      <table id="default-list" class="pure-table pure-table-horizontal">
+        <thead>
+          <tr>
+            <th>You type</th>
+            <th>You get</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+
+      <footer class="pure-g">
+        <div class="pure-u-1-2">
+          Latest version, other releases and info at <a href="http://asciimoji.com" target="_new">asciimoji.com</a>
         </div>
-        <div class="pure-control-group">
-          <label for="suffix">emoticon suffix</label>
-          <input id="suffix" type="text" value=")">
+
+        <div class="pure-u-1-2">
+          made by <a href="http://hpcodecraft.me" target="_new">hpcodecraft</a> 2013-<span id="current-year"></span>
         </div>
-        <div id="message" class="pure-control-group"></div>
-      </fieldset>
-    </form>
-  </div>
+      </footer>
+    </div>
 
-  <h2>your ASCIImoji</h2>
-  <div class="wrapper">
-    <form class="pure-form" style="margin-bottom:.25em;">
-      <fieldset>
-        <input type="text" id="add-text" class="pure-input-1-3" placeholder="Text" title="Enter comma-separated words without prefix and suffix">
-        <input type="text" id="add-ascii" class="pure-input-1-3" placeholder="ASCIImoji" title="The emoticons' ASCII representation">
-        <label for="enable-submission" title="Submit your emoticon to ASCIImoji.com so it can be included in future releases">
-            <input id="enable-submission" type="checkbox"> share
-        </label>
-        <button type="button" id="add-emoticon" class="pure-button pure-button-success pure-button-small fr">add</button>
-      </fieldset>
-    </form>
-    <table id="user-list" class="pure-table pure-table-horizontal">
-      <thead>
-        <tr>
-          <th>Text</th>
-          <th>ASCIImoji</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-  </div>
-
-  <br>
-
-  <h2>default ASCIImoji</h2>
-  <div class="wrapper">
-    <table id="default-list" class="pure-table pure-table-horizontal">
-      <thead>
-        <tr>
-          <th>Text</th>
-          <th>ASCIImoji</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-  </div>
-
-  <footer>
-    by <a href="http://hpcodecraft.me" target="_new">hpcodecraft</a> 2013-2014
-  </footer>
-  <script src="../js/jquery-2.1.1.min.js"></script>
-  <script src="../js/asciimoji.js"></script>
-  <script src="options.js"></script>
-</body>
+    <script src="../js/jquery-2.1.1.min.js"></script>
+    <script src="../js/asciimoji.js"></script>
+    <script src="options.js"></script>
+  </body>
 </html>
