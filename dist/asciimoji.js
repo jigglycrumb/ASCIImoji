@@ -142,7 +142,7 @@ var asciimoji = function(text, options, userDictionary) {
     },
     crim3s: {
       words: ['crim3s'],
-      ascii: '(✜︵✜)'
+      ascii: '( ✜︵✜ )'
     },
     cross: {
       words: ['cross'],
