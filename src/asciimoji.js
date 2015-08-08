@@ -11,6 +11,26 @@ var asciimoji = function(text, options, userDictionary) {
     suffix: ')'
   };
 
+  function transpose(str, table, backwards) {
+    var result = new Array(str.length);
+
+    function getChar(i) {
+      var o = str.charAt(i),
+          n = table[o];
+      return n != undefined ? n : o;
+    }
+
+    if(backwards && backwards === true) {
+      var last = str.length - 1;
+      for(var i = last; i >= 0; --i) result[last - i] = getChar(i);
+    }
+    else {
+      var last = str.length;
+      for(var i = 0; i < last; i++) result[i] = getChar(i);
+    }
+    return result.join('');
+  }
+
   var dictionary = {
     acid: {
       words: ['acid'],
@@ -119,6 +139,10 @@ var asciimoji = function(text, options, userDictionary) {
     creep: {
       words: ['creep'],
       ascii: 'ԅ(≖‿≖ԅ)'
+    },
+    crim3s: {
+      words: ['crim3s'],
+      ascii: '( ✜︵✜ )'
     },
     cross: {
       words: ['cross'],
@@ -272,9 +296,43 @@ var asciimoji = function(text, options, userDictionary) {
       words: ['facepalm'],
       ascii: '(>ლ)'
     },
-    fancylove: {
-      words: ['fancylove'],
-      ascii: 'ℒℴνℯ'
+    fancytext: {
+      words: ['fancytext'],
+      ascii: function(text) {
+
+        text = text || 'beware, i am fancy!';
+
+        var table = {
+          a : 'α',
+          b : 'в',
+          c : '¢',
+          d : '∂',
+          e : 'є',
+          f : 'ƒ',
+          g : 'g',
+          h : 'н',
+          i : 'ι',
+          j : 'נ',
+          k : 'к',
+          l : 'ℓ',
+          m : 'м',
+          n : 'η',
+          o:  'σ',
+          p : 'ρ',
+          q : 'q',
+          r : 'я',
+          s : 'ѕ',
+          t : 'т',
+          u : 'υ',
+          v : 'ν',
+          w : 'ω',
+          x : 'χ',
+          y : 'у',
+          z : 'z',
+        };
+
+        return transpose(text.toLowerCase(), table);
+      }
     },
     fart: {
       words: ['fart'],
@@ -291,6 +349,54 @@ var asciimoji = function(text, options, userDictionary) {
     fish: {
       words: ['fish'],
       ascii: '<"(((<3'
+    },
+    fliptext: {
+      words: ['fliptext'],
+      ascii: function(text) {
+
+        text = text || 'flip me like a table';
+
+        var table = {
+          a : '\u0250',
+          b : 'q',
+          c : '\u0254',
+          d : 'p',
+          e : '\u01DD',
+          f : '\u025F',
+          g : '\u0183',
+          h : '\u0265',
+          i : '\u0131',
+          j : '\u027E',
+          k : '\u029E',
+          l : '\u05DF',
+          m : '\u026F',
+          n : 'u',
+          p :  'd',
+          q :  'b',
+          r : '\u0279',
+          t : '\u0287',
+          v : '\u028C',
+          w : '\u028D',
+          y : '\u028E',
+          '.' : '\u02D9',
+          '[' : ']',
+          '(' : ')',
+          '{' : '}',
+          '?' : '\u00BF',
+          '!' : '\u00A1',
+          "\'" : ',',
+          '<' : '>',
+          '_' : '\u203E',
+          '"' : '\u201E',
+          '\\' : '\\',
+          ';' : '\u061B',
+          '\u203F' : '\u2040',
+          '\u2045' : '\u2046',
+          '\u2234' : '\u2235'
+        };
+
+        return transpose(text.toLowerCase(), table, true);
+      }
     },
     flipped: {
       words: ['flipped', 'heavytable'],
@@ -621,9 +727,9 @@ var asciimoji = function(text, options, userDictionary) {
       ascii: function(amount) {
         amount = amount || 1;
         var dice = ['⚀', '⚁', '⚂', '⚃', '⚄', '⚅'],
-            str  = '';
-        for(var i=0; i<amount; i++) str += dice[getRandomInt(0,5)];
-        return str;
+            rolls  = [];
+        for(var i=0; i<amount; i++) rolls.push(dice[getRandomInt(0,5)]);
+        return rolls.join(' ');
       }
     },
     rolleyes: {
@@ -786,6 +892,44 @@ var asciimoji = function(text, options, userDictionary) {
       words: ['wink'],
       ascii: '( •ॢ◡-ॢ)-*'
     },
+    witchtext: {
+      words: ['witchtext'],
+      ascii: function(text) {
+
+        text = text || 'when shall we three meet again?';
+
+        var table = {
+          a : 'Λ',
+          b : 'ß',
+          c : '¢',
+          d : 'Ð',
+          e : 'Σ',
+          f : 'Ŧ',
+          g : 'G',
+          h : 'H',
+          i : '|',
+          j : '⅃',
+          k : 'Ҡ',
+          l : 'L',
+          m : 'M',
+          n : 'И',
+          o:  'Ө',
+          p : 'þ',
+          q : 'Q',
+          r : 'Я',
+          s : '$',
+          t : '†',
+          u : 'V',
+          v : 'V',
+          w : 'W',
+          x : 'X',
+          y : 'Ұ',
+          z : 'Z',
+        };
+
+        return transpose(text.toLowerCase(), table);
+      }
+    },
     wooh: {
       words: ['wooh'],
       ascii: '(‘{}’)'
@@ -846,7 +990,7 @@ var asciimoji = function(text, options, userDictionary) {
   }
 
   function replace( text ) {
-    text = text.replace(new RegExp("[\\"+o.prefix+"]([a-z0-9-<>, ]*)[\\"+o.suffix+"]", "gim"), function(termWithDelimiters, term) {
+    text = text.replace(new RegExp("[\\"+o.prefix+"](.*)[\\"+o.suffix+"]", "gim"), function(termWithDelimiters, term) {
 
       var params = null;
 
