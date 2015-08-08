@@ -2,6 +2,10 @@ var asciimoji = function(text, options, userDictionary) {
 
   "use strict";
 
+  function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
   var o = options || {
     prefix: '(',
     suffix: ')'
@@ -11,6 +15,10 @@ var asciimoji = function(text, options, userDictionary) {
     acid: {
       words: ['acid'],
       ascii: '⊂(◉‿◉)つ'
+    },
+    afraid: {
+      words: ['afraid'],
+      ascii: '(ㆆ _ ㆆ)'
     },
     angel: {
       words: ['angel'],
@@ -36,9 +44,17 @@ var asciimoji = function(text, options, userDictionary) {
       words: ['bear', 'koala'],
       ascii: 'ʕ·͡ᴥ·ʔ﻿'
     },
+    bearflip: {
+      words: ['bearflip'],
+      ascii: 'ʕノ•ᴥ•ʔノ ︵ ┻━┻'
+    },
     because: {
       words: ['because', 'since'],
       ascii: '∵'
+    },
+    bigheart: {
+      words: ['bigheart'],
+      ascii: '❤',
     },
     blubby: {
       words: ['blubby'],
@@ -47,6 +63,10 @@ var asciimoji = function(text, options, userDictionary) {
     bond: {
       words: ['bond', '007'],
       ascii: '┌( ͝° ͜ʖ͡°)=ε/̵͇̿̿/’̿’̿ ̿'
+    },
+    bribe: {
+      words: ['bribe'],
+      ascii: '( •͡˘ _•͡˘)ノð'
     },
     bubbles: {
       words: ['bubbles'],
@@ -68,6 +88,10 @@ var asciimoji = function(text, options, userDictionary) {
       words: ['chubby'],
       ascii: '╭(ʘ̆~◞౪◟~ʘ̆)╮'
     },
+    claro: {
+      words: ['claro'],
+      ascii: '(͡ ° ͜ʖ ͡ °)'
+    },
     clique: {
       words: ['clique'],
       ascii: 'ヽ༼ ຈل͜ຈ༼ ▀̿̿Ĺ̯̿̿▀̿ ̿༽Ɵ͆ل͜Ɵ͆ ༽ﾉ'
@@ -87,6 +111,10 @@ var asciimoji = function(text, options, userDictionary) {
     copyright: {
       words: ['copy','c'],
       ascii: '©'
+    },
+    couplekiss: {
+      words: ['couplekiss'],
+      ascii: '( c//”-}{-*||x)'
     },
     creep: {
       words: ['creep'],
@@ -143,6 +171,10 @@ var asciimoji = function(text, options, userDictionary) {
     delta: {
       words: ['delta'],
       ascii: 'Δ'
+    },
+    depressed: {
+      words: ['depressed'],
+      ascii: '(︶︹︶)'
     },
     derp: {
       words: ['derp'],
@@ -212,6 +244,10 @@ var asciimoji = function(text, options, userDictionary) {
       words: ['emdash', '--'],
       ascii: '–'
     },
+    endure: {
+      words: ['endure'],
+      ascii: '(҂◡_◡) ᕤ'
+    },
     envelope: {
       words: ['envelope', 'letter'],
       ascii: '✉︎'
@@ -235,6 +271,10 @@ var asciimoji = function(text, options, userDictionary) {
     facepalm: {
       words: ['facepalm'],
       ascii: '(>ლ)'
+    },
+    fancylove: {
+      words: ['fancylove'],
+      ascii: 'ℒℴνℯ'
     },
     fart: {
       words: ['fart'],
@@ -264,6 +304,10 @@ var asciimoji = function(text, options, userDictionary) {
       words: ['f'],
       ascii: '✿'
     },
+    friendflip: {
+      words: ['friendflip'],
+      ascii: '(╯°□°)╯︵ ┻━┻ ︵ ╯(°□° ╯)'
+    },
     frown: {
       words: ['frown'],
       ascii: '(ღ˘⌣˘ღ)'
@@ -283,6 +327,10 @@ var asciimoji = function(text, options, userDictionary) {
     ghost: {
       words: ['ghost'],
       ascii: '༼ つ ❍_❍ ༽つ'
+    },
+    gift: {
+      words: ['gift', 'present'],
+      ascii: '(´・ω・)っ由',
     },
     gimme: {
       words: ['gimme'],
@@ -344,6 +392,10 @@ var asciimoji = function(text, options, userDictionary) {
       words: ['hello', 'ohai', 'wave', 'bye'],
       ascii: '|ʘ‿ʘ)╯'
     },
+    hitting: {
+      words: ['hitting'],
+      ascii: '( ｀皿´)｡ﾐ/'
+    },
     hugs: {
       words: ['hug', 'hugs'],
       ascii: '(づ｡◕‿‿◕｡)づ'
@@ -396,17 +448,33 @@ var asciimoji = function(text, options, userDictionary) {
       words: ['lennyfight'],
       ascii: '(ง ͠° ͟ʖ ͡°)ง'
     },
+    lennyshrug: {
+      words: ['lennyshrug'],
+      ascii: '¯\\_( ͡° ͜ʖ ͡°)_/¯'
+    },
     lennywizard: {
       words: ['lennywizard'],
       ascii: '╰( ͡° ͜ʖ ͡° )つ──☆*:・ﾟ'
     },
     loading: {
       words: ['loading'],
-      ascii: '███▒▒▒▒▒▒▒'
+      ascii: function(percent) {
+        percent = percent || 30;
+        var filledBlocks = Math.round(percent/10) <= 10 ? Math.round(percent/10) : 10,
+            emptyBlocks = 10 - filledBlocks,
+            str = '';
+        for(var i = 0; i < filledBlocks; i++) str += '█';
+        for(var i = 0; i < emptyBlocks; i++) str += '▒';
+        return str;
+      }
     },
     love: {
       words: ['love'],
       ascii: '♥‿♥'
+    },
+    lovebear: {
+      words: ['lovebear'],
+      ascii: 'ʕ♥ᴥ♥ʔ'
     },
     lumpy: {
       words: ['lumpy'],
@@ -420,9 +488,13 @@ var asciimoji = function(text, options, userDictionary) {
       words: ['magic'],
       ascii: 'ᕙ(░ಥ╭͜ʖ╮ಥ░)━☆ﾟ.*･｡ﾟ'
     },
+    magicflip: {
+      words: ['magicflip'],
+      ascii: '(/¯◡ ‿ ◡)/¯ ~ ┻━┻'
+    },
     meep: {
       words: ['meep'],
-      ascii: '\\°^°/'
+      ascii: '\\(°^°)/'
     },
     meh: {
       words: ['meh'],
@@ -447,6 +519,10 @@ var asciimoji = function(text, options, userDictionary) {
     nice: {
       words: ['nice'],
       ascii: '( ͡° ͜ °)'
+    },
+    no: {
+      words: ['no'],
+      ascii: '→_←'
     },
     noclue: {
       words: ['noclue'],
@@ -500,6 +576,10 @@ var asciimoji = function(text, options, userDictionary) {
       words: ['pi'],
       ascii: 'π'
     },
+    point: {
+      words: ['point'],
+      ascii: '(☞ﾟヮﾟ)☞'
+    },
     pooh: {
       words: ['pooh'],
       ascii: 'ʕ •́؈•̀)'
@@ -536,6 +616,16 @@ var asciimoji = function(text, options, userDictionary) {
       words: ['riot'],
       ascii: '୧༼ಠ益ಠ༽୨'
     },
+    rolldice: {
+      words: ['rolldice'],
+      ascii: function(amount) {
+        amount = amount || 1;
+        var dice = ['⚀', '⚁', '⚂', '⚃', '⚄', '⚅'],
+            str  = '';
+        for(var i=0; i<amount; i++) str += dice[getRandomInt(0,5)];
+        return str;
+      }
+    },
     rolleyes: {
       words: ['rolleyes'],
       ascii: '(◔_◔)'
@@ -552,13 +642,25 @@ var asciimoji = function(text, options, userDictionary) {
       words: ['sad'],
       ascii: 'ε(´סּ︵סּ`)з'
     },
+    saddonger: {
+      words: ['saddonger'],
+      ascii: 'ヽ༼ຈʖ̯ຈ༽ﾉ'
+    },
     sadlenny: {
       words: ['sadlenny'],
       ascii: '( ͡° ʖ̯ ͡°)'
     },
+    shout: {
+      words: ['shout'],
+      ascii: '╚(•⌂•)╝'
+    },
     shrug: {
       words: ['shrug'],
       ascii: '¯\\_(ツ)_/¯'
+    },
+    skull: {
+      words: ['skull'],
+      ascii: '☠'
     },
     smile: {
       words: ['smile'],
@@ -566,7 +668,15 @@ var asciimoji = function(text, options, userDictionary) {
     },
     smiley: {
       words: ['smiley'],
-      ascii: '☺︎',
+      ascii: '☺︎'
+    },
+    smirk: {
+      words: ['smirk'],
+      ascii: '¬‿¬'
+    },
+    sniper: {
+      words: ['sniper'],
+      ascii: '▄︻̷̿┻̿═━一'
     },
     snowman: {
       words: ['snowman'],
@@ -608,9 +718,17 @@ var asciimoji = function(text, options, userDictionary) {
       words: ['sun'],
       ascii: '☀'
     },
+    surrender: {
+      words: ['surrender'],
+      ascii: '\\_(-_-)_/',
+    },
     stalker: {
       words: ['stalker'],
       ascii: '┬┴┬┴┤(･_├┬┴┬┴'
+    },
+    swag: {
+      words: ['swag'],
+      ascii: '(̿▀̿‿ ̿▀̿ ̿)'
     },
     tabledown: {
       words: ['tabledown'],
@@ -676,6 +794,10 @@ var asciimoji = function(text, options, userDictionary) {
       words: ['wtf'],
       ascii: '(⊙＿⊙\')'
     },
+    wut: {
+      words: ['wut'],
+      ascii: '⊙ω⊙'
+    },
     yay: {
       words: ['yay'],
       ascii: '\\( ﾟヮﾟ)/'
@@ -683,6 +805,10 @@ var asciimoji = function(text, options, userDictionary) {
     yen: {
       words: ['yen'],
       ascii: '¥'
+    },
+    yinyang: {
+      words: ['yinyang', 'yy'],
+      ascii: '☯'
     },
     yolo: {
       words: ['yolo'],
@@ -707,19 +833,36 @@ var asciimoji = function(text, options, userDictionary) {
     zombie: {
       words: ['zombie'],
       ascii: '[¬º-°]¬'
-    }
+    },
   },
   symmetricalDictionary = {};
 
   for(var hash in userDictionary) dictionary[hash] = userDictionary[hash];
 
   for(var term in dictionary) {
-    for(var i = 0; i < dictionary[term].words.length; ++i) symmetricalDictionary[dictionary[term].words[i]] = dictionary[term].ascii;
+    var words = dictionary[term].words,
+        ascii = dictionary[term].ascii;
+    for(var i = 0; i < words.length; ++i) symmetricalDictionary[words[i]] = ascii;
   }
 
   function replace( text ) {
-    text = text.replace(new RegExp("[\\"+o.prefix+"]([a-z0-9-<> ]*)[\\"+o.suffix+"]", "gim"), function(a, b) {
-      return symmetricalDictionary[b.toLowerCase()] || a;
+    text = text.replace(new RegExp("[\\"+o.prefix+"]([a-z0-9-<>, ]*)[\\"+o.suffix+"]", "gim"), function(termWithDelimiters, term) {
+
+      var params = null;
+
+      if(term.indexOf(',') !== -1) {
+        var temp  = term.split(',');
+        term      = temp.shift();
+        params    = temp;
+      }
+
+      var dictItem = symmetricalDictionary[term.toLowerCase()];
+
+      if(dictItem) {
+        if(typeof dictItem == 'function') return dictItem.apply(null, params);
+        else return dictItem;
+      }
+      else return termWithDelimiters;
     });
     return text;
   }
