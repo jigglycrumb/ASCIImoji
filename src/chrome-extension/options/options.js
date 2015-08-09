@@ -6,28 +6,29 @@ $(function() { // document.ready
   };
 
   // from: https://developer.mozilla.org/en-US/docs/Web/API/window.btoa
-  function utf8_to_b64( str ) {
-      return window.btoa(unescape(encodeURIComponent( str )));
+  function utf8_to_b64(str) {
+    return window.btoa(unescape(encodeURIComponent(str)));
   }
 
-  function b64_to_utf8( str ) {
-      return decodeURIComponent(escape(window.atob( str )));
+  function b64_to_utf8(str) {
+    return decodeURIComponent(escape(window.atob(str)));
   }
 
-  function addRow( settings, table, hash, words, ascii, deleteButton ) {
+  function addRow(settings, table, hash, words, ascii, deleteButton) {
     var wordsHTML = [],
-        deleteButtonHTML = '';
+        deleteButton = deleteButton || false,
+        deleteButtonHTML = '',
+        interactive = typeof ascii == 'function' ? '<sup><a href="#interactive">★</a></sup>': '';
+        asciiStr = typeof ascii == 'function' ? ascii() : ascii;
 
-    deleteButton = typeof deleteButton !== 'undefined' ? deleteButton : false;
-
-    words.forEach(function(w){
-      if( deleteButton === true ) {
+    words.forEach(function(w) {
+      if(deleteButton === true) {
         deleteButtonHTML = '<button type="button" class="pure-button pure-button-error pure-button-xsmall fr delete-button" title="delete">✖</button>';
       }
       wordsHTML.push('<span class="prefix">'+settings.prefix+'</span>'+w+'<span class="suffix">'+settings.suffix+'</span>');
     });
 
-    table.find('tbody').append('<tr data-hash="'+hash+'"><td>'+wordsHTML.join('<br>')+'</td><td><span class="ascii fl">'+ascii+'</span>'+deleteButtonHTML+'</td></tr>');
+    table.find('tbody').append('<tr data-hash="'+hash+'"><td>'+wordsHTML.join('<br>')+interactive+'</td><td><span class="ascii fl">'+asciiStr+'</span>'+deleteButtonHTML+'</td></tr>');
   }
 
   // load storage
@@ -73,7 +74,7 @@ $(function() { // document.ready
     saveDelimiters();
   });
 
-  function saveDelimiters(){
+  function saveDelimiters() {
     storage.settings.prefix = $('#prefix').val();
     storage.settings.suffix = $('#suffix').val();
     chrome.storage.sync.set(storage, function() {
@@ -86,7 +87,7 @@ $(function() { // document.ready
   }
 
   // make add emoticon button work
-  $('#add-emoticon').click(function(){
+  $('#add-emoticon').click(function() {
     var words = $('#add-text').val().split(','),
         ascii = $('#add-ascii').val();
 
@@ -122,7 +123,7 @@ $(function() { // document.ready
   });
 
   // make delete emoticon buttons work
-  $(document).on('click', '.delete-button', function(){
+  $(document).on('click', '.delete-button', function() {
     var row = $(this).parents('tr'),
         hash = row.data('hash');
     if( confirm('Do you really want to delete this emoticon?')) {

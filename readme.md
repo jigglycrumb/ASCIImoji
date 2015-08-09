@@ -12,7 +12,7 @@ The repository also contains a jQuery plugin for super easy usage.
 * delimiters of the emoticon keywords can be configured (*defaults to brackets ()*)
 * jQuery plugin
 
-Current version: 1.4.0.
+Current version: 1.4.1
 
 ##Basic usage
 

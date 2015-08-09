@@ -133,3 +133,8 @@ footer > div:nth-child(2) {
 tr:nth-child(2n) td {
   background: #f2f2f2;
 }
+
+sup a, sup a:hover {
+  text-decoration: none;
+  cursor: help;
+}
