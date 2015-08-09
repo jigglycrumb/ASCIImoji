@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "ASCIImoji",
   "description": "Asciify ALL the websites!",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "permissions": ["storage", "tabs", "http://*/*", "https://*/*"],
   "icons": {
     "16": "images/icon-16.png",

@@ -1,5 +1,5 @@
 // asciimoji jQuery plugin
-;(function ( $, window, document, asciimoji, undefined ) {
+;(function ($, window, document, asciimoji, undefined) {
   var pluginName = "asciimoji",
       defaults = {
         prefix: '(',
@@ -30,7 +30,7 @@
         return sel.text.length - selLen;
       }
     },
-    setCaret: function(el,position) {
+    setCaret: function(el, position) {
       var input = el.get(0);
       if(input !== null) {
         if(input.createTextRange) {
@@ -50,7 +50,7 @@
         }
       }
     },
-    lastDiff: function( string1, string2 ) {
+    lastDiff: function(string1, string2) {
       var len = Math.min(string1.length, string2.length),
           lastDiff = len,
           char1,
@@ -67,12 +67,12 @@
       return lastDiff;
     },
     walkTheDom: function walk(node, func) {
-        func(node);
-        node = node.firstChild;
-        while (node) {
-            walk(node, func);
-            node = node.nextSibling;
-        }
+      func(node);
+      node = node.firstChild;
+      while (node) {
+        walk(node, func);
+        node = node.nextSibling;
+      }
     },
     init: function() {
       var plugin = this,
@@ -88,12 +88,15 @@
       switch(tagName) {
         case 'input':
         case 'textarea':
-          el.off('input paste').on('input paste',function(){
+          el.off('input paste').on('input paste',function() {
             oldValue = el.val();
             newValue = asciimoji(oldValue,options,dictionary);
             if(oldValue != newValue) {
               el.empty().val(newValue);
               caret = plugin.lastDiff(oldValue,newValue);
+
+              // el.change();
+
               plugin.setCaret(el,caret);
             }
           });
@@ -110,6 +113,10 @@
                   if(oldValue != newValue) {
                     node.nodeValue = newValue;
                     caret = plugin.lastDiff(oldValue,newValue);
+
+                    // el.change();
+                    // console.log('contenteditable, change');
+
                     if(typeof window.getSelection != "undefined" && typeof document.createRange != "undefined") {
                       var range = document.createRange();
                       range.setStart(node,caret);
@@ -135,11 +142,11 @@
     }
   };
 
-  $.fn[pluginName] = function ( options, dictionary ) {
-    return this.each(function () {
-      if (!$.data(this, "plugin_" + pluginName)) {
-        $.data(this, "plugin_" + pluginName, new Plugin( this, options, dictionary ));
+  $.fn[pluginName] = function(options, dictionary) {
+    return this.each(function() {
+      if(!$.data(this, "plugin_" + pluginName)) {
+        $.data(this, "plugin_" + pluginName, new Plugin(this, options, dictionary));
       }
     });
   };
-})( jQuery, window, document, asciimoji );
+})(jQuery, window, document, asciimoji);
