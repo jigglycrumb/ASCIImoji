@@ -88,7 +88,8 @@
       switch(tagName) {
         case 'input':
         case 'textarea':
-          el.off('input paste').on('input paste',function() {
+          el.off('input paste').on('input paste',function(e) {
+            console.log('input', e.keyCode, e.which);
             oldValue = el.val();
             newValue = asciimoji(oldValue,options,dictionary);
             if(oldValue != newValue) {

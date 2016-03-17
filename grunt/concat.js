@@ -15,4 +15,4 @@ module.exports = {
     // the location of the resulting JS file
     dest: 'dist/homepage/index.js'
   }
-}
+};

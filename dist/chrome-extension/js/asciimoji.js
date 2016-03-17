@@ -12,21 +12,23 @@ var asciimoji = function(text, options, userDictionary) {
   };
 
   function transpose(str, table, backwards) {
-    var result = new Array(str.length);
+    var last,
+        i,
+        result = new Array(str.length);
 
     function getChar(i) {
       var o = str.charAt(i),
           n = table[o];
-      return n != undefined ? n : o;
+      return n !== undefined ? n : o;
     }
 
     if(backwards && backwards === true) {
-      var last = str.length - 1;
-      for(var i = last; i >= 0; --i) result[last - i] = getChar(i);
+      last = str.length - 1;
+      for(i = last; i >= 0; --i) result[last - i] = getChar(i);
     }
     else {
-      var last = str.length;
-      for(var i = 0; i < last; i++) result[i] = getChar(i);
+      last = str.length;
+      for(i = 0; i < last; i++) result[i] = getChar(i);
     }
     return result.join('');
   }
@@ -568,9 +570,10 @@ var asciimoji = function(text, options, userDictionary) {
         percent = percent || 30;
         var filledBlocks = Math.round(percent/10) <= 10 ? Math.round(percent/10) : 10,
             emptyBlocks = 10 - filledBlocks,
-            str = '';
-        for(var i = 0; i < filledBlocks; i++) str += '█';
-        for(var i = 0; i < emptyBlocks; i++) str += '▒';
+            str = '',
+            i;
+        for(i = 0; i < filledBlocks; i++) str += '█';
+        for(i = 0; i < emptyBlocks; i++) str += '▒';
         return str;
       }
     },

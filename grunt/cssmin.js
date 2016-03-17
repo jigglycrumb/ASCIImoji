@@ -13,4 +13,4 @@ module.exports = {
     // the location of the resulting CSS file
     dest: 'dist/homepage/index.min.css'
   }
-}
+};
