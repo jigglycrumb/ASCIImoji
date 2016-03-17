@@ -83,14 +83,13 @@
           oldValue,
           newValue,
           lastChar,
-          caret;
+          caret,
+          triggerEvents = 'input paste keyup';
 
       switch(tagName) {
         case 'input':
         case 'textarea':
-          // input paste
-          el.off('keyup').on('keyup',function(e) {
-            console.log('input', e.keyCode, e.which);
+          el.off(triggerEvents).on(triggerEvents, function(e) {
             oldValue = el.val();
             newValue = asciimoji(oldValue,options,dictionary);
             if(oldValue != newValue) {
