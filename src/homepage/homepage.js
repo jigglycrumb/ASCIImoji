@@ -43,12 +43,12 @@ $(function(){
 
     $('.form-group').removeClass('has-error');
 
-    if(data.words == '') {
+    if(data.words === '') {
       $('#submission-words').parents('.form-group').addClass('has-error');
       return;
     }
 
-    if(data.ascii == '') {
+    if(data.ascii === '') {
       $('#submission-ascii').parents('.form-group').addClass('has-error');
       return;
     }
@@ -57,7 +57,7 @@ $(function(){
       var message = 'Submission of the emoticon failed. This happened most likely because someone else already submitted the same emoticon before. ¯\\_(ツ)_/¯',
         messageClass = 'danger';
 
-      if(response.success == true) {
+      if(response.success === true) {
         $('#submission-words,#submission-ascii').val('');
         message = 'Emoticon successfully submitted. Thank you for supporting ASCIImoji! \\( ﾟヮﾟ)/';
         messageClass = 'success';

@@ -54,4 +54,4 @@ module.exports = {
     ],
     dest: 'dist/homepage/',
   },
-}
+};

@@ -16,4 +16,4 @@ module.exports = {
       dest: 'dist/chrome-extension/manifest.json'
     }]
   }
-}
+};

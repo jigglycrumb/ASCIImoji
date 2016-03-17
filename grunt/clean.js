@@ -8,4 +8,4 @@ module.exports = {
       'dist/homepage/index.js',
     ]
   },
-}
+};

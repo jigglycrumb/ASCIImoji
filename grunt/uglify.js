@@ -26,4 +26,4 @@ module.exports = {
     src: 'dist/homepage/index.js',
     dest: 'dist/homepage/index.min.js',
   },
-}
+};
