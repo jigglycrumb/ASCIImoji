@@ -68,7 +68,4 @@ or with the jQuery plugin:
       $(this).asciimoji(options, myEmoticons);
     });
 
-
-To try it out yourself, download the repo and open index.html in your browser.
-
 If you're using Google Chrome, you can also asciify your browsing experience by getting the extension from the [Chrome Web Store](https://chrome.google.com/webstore/detail/asciimoji/pglkjdoamcojlfjbdeenodmpkjkgplik)
