@@ -12,6 +12,7 @@
     this.dictionary = $.extend( {}, {}, dictionary );
     this._defaults = defaults;
     this._name = pluginName;
+    this.helper = null;
     this.init();
   }
 
@@ -74,6 +75,67 @@
         node = node.nextSibling;
       }
     },
+    createHelper: function() {
+      var dictionary = asciimoji();
+      var symmetricalDictionary = {};
+
+      for(var term in dictionary) {
+        var words = dictionary[term].words,
+            ascii = dictionary[term].ascii;
+        for(var i = 0; i < words.length; ++i) symmetricalDictionary[words[i]] = ascii;
+      }
+
+      var list = '<ul>';
+
+      for(term in symmetricalDictionary) {
+        list+= '<li><strong>'+term+'</strong><label>'+symmetricalDictionary[term]+'</label></li>';
+      }
+
+      list += '</ul>';
+
+      this.helper = $('<div id="asciimoji-helper"></div>');
+      this.helper.css({
+        background: 'aliceblue',
+        border: '1px solid lightblue',
+        height: '90px',
+        overflowY: 'auto',
+        padding: '5px',
+        position: 'absolute',
+        textAlign: 'left',
+      });
+      this.helper.html(list);
+
+      $('body').append(this.helper);
+    },
+    showHelper: function() {
+      if(this.helper === null) {
+        this.createHelper();
+      }
+
+      var rect = this.element.getBoundingClientRect();
+
+      // console.log(rect);
+
+      this.helper.css({
+        top: rect.left + 'px',
+        left: rect.bottom + 'px',
+        width: rect.width + 'px',
+      }).show();
+    },
+    hideHelper: function() {
+      $('#asciimoji-helper').hide();
+    },
+    toggleHelper: function(text) {
+      var lastPrefix = text.lastIndexOf(this.options.prefix);
+      var lastSuffix = text.lastIndexOf(this.options.suffix);
+
+      if(lastPrefix > lastSuffix) {
+        this.showHelper();
+      }
+      else if(lastSuffix > lastPrefix) {
+        this.hideHelper();
+      }
+    },
     init: function() {
       var plugin = this,
           el = $(this.element),
@@ -84,14 +146,18 @@
           newValue,
           lastChar,
           caret,
-          triggerEvents = 'input paste keyup';
+          triggerEvents = 'input paste',
+          hideEvents = 'blur';
 
       switch(tagName) {
         case 'input':
         case 'textarea':
           el.off(triggerEvents).on(triggerEvents, function(e) {
+
             oldValue = el.val();
             newValue = asciimoji(oldValue,options,dictionary);
+            plugin.toggleHelper(oldValue);
+
             if(oldValue != newValue) {
               el.empty().val(newValue);
               caret = plugin.lastDiff(oldValue,newValue);
@@ -101,6 +167,10 @@
               plugin.setCaret(el,caret);
             }
           });
+
+          el.off(hideEvents).on(hideEvents, function() {
+            plugin.hideHelper();
+          });
           break;
         default:
           el.data({
@@ -108,8 +178,10 @@
               var elDOM = el.get(0);
               plugin.walkTheDom(elDOM, function(node) {
                 if(node.nodeType == 3 ) {
+
                   oldValue = node.nodeValue;
                   newValue = asciimoji(oldValue,options,dictionary);
+                  plugin.toggleHelper(oldValue);
 
                   if(oldValue != newValue) {
                     node.nodeValue = newValue;
