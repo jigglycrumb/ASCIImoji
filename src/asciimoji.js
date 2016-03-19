@@ -993,7 +993,7 @@ var asciimoji = function(text, options, userDictionary) {
   }
 
   function replace( text ) {
-    text = text.replace(new RegExp("[\\"+o.prefix+"](.*)[\\"+o.suffix+"]", "gim"), function(termWithDelimiters, term) {
+    text = text.replace(new RegExp("["+o.prefix+"]([^"+o.suffix+"]*)["+o.suffix+"]", "gim"), function(termWithDelimiters, term) {
 
       var params = null;
 
