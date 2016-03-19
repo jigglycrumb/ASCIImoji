@@ -1,5 +1,6 @@
 // asciimoji jQuery plugin
 ;(function ($, window, document, asciimoji, undefined) {
+
   var pluginName = "asciimoji",
       defaults = {
         prefix: '(',
@@ -15,6 +16,8 @@
     this.helper = null;
     this.init();
   }
+
+  var ACTIVE_CLASS = 'asciimoji-active';
 
   Plugin.prototype = {
     getCaret: function(el) {
@@ -76,6 +79,16 @@
       }
     },
     createHelper: function() {
+
+      var plugin = this;
+
+      var styles = $('<style></style>');
+      var css = '.' + ACTIVE_CLASS + ' { background: lightblue }';
+
+      styles.html(css);
+
+      $('head').append(styles);
+
       var dictionary = asciimoji();
       var symmetricalDictionary = {};
 
@@ -85,31 +98,63 @@
         for(var i = 0; i < words.length; ++i) symmetricalDictionary[words[i]] = ascii;
       }
 
-      var list = '<ul>';
+      var table = '<table>';
 
       for(term in symmetricalDictionary) {
-        list+= '<li><strong>'+term+'</strong><label>'+symmetricalDictionary[term]+'</label></li>';
+        var value = symmetricalDictionary[term];
+        if(typeof symmetricalDictionary[term] == 'function') {
+          value = symmetricalDictionary[term]();
+        }
+        table+= '<tr data-word="'+term+'"><td>'+term+'</td><td>'+value+'</td></tr>';
       }
 
-      list += '</ul>';
+      table += '</table>';
+
+      table = $(table).css({
+        'border': 'none',
+        'padding': 0,
+        'border-collapse': 'collapse',
+        'width': '100%',
+      });
 
       this.helper = $('<div id="asciimoji-helper"></div>');
       this.helper.css({
-        background: 'aliceblue',
-        border: '1px solid lightblue',
-        height: '90px',
-        overflowY: 'auto',
-        padding: '5px',
-        position: 'absolute',
-        textAlign: 'left',
+        'background': 'aliceblue',
+        'border': '1px solid lightblue',
+        'max-height': '200px',
+        'overflow-y': 'auto',
+        'padding': '5px',
+        'position': 'absolute',
+        'text-align': 'left',
       });
-      this.helper.html(list);
+      this.helper.html(table);
 
       $('body').append(this.helper);
+
+      $(this.element).on('keydown', function(e) {
+        switch(e.keyCode) {
+          case 40:  plugin.helperArrowDown();
+                    break;
+
+          case 38:  plugin.helperArrowUp();
+                    break;
+
+          case 27:  plugin.hideHelper();
+                    break;
+
+          case 13:  plugin.insertWord();
+                    break;
+        }
+      });
     },
-    showHelper: function() {
+    showHelper: function(str) {
       if(this.helper === null) {
         this.createHelper();
+      }
+
+      if(str.length < 1) {
+        this.hideHelper();
+        return;
       }
 
       var rect = this.element.getBoundingClientRect();
@@ -120,21 +165,95 @@
         top: rect.left + 'px',
         left: rect.bottom + 'px',
         width: rect.width + 'px',
-      }).show();
+      });
+
+      this.helper.find('tr').removeClass('visible').css('display', 'none').removeClass(ACTIVE_CLASS);
+
+      var visibleRows = this.helper.find('td:contains('+str.toLowerCase()+')').parents('tr');
+
+      if(visibleRows.length === 0) {
+        this.hideHelper();
+      }
+      else {
+        visibleRows.addClass('visible').css('display', 'table-row');
+        visibleRows.last().addClass(ACTIVE_CLASS);
+        this.helper.show();
+      }
     },
     hideHelper: function() {
       $('#asciimoji-helper').hide();
     },
     toggleHelper: function(text) {
-      var lastPrefix = text.lastIndexOf(this.options.prefix);
-      var lastSuffix = text.lastIndexOf(this.options.suffix);
+      var lastPrefix = text.lastIndexOf(this.options.prefix),
+          lastSuffix = text.lastIndexOf(this.options.suffix);
 
       if(lastPrefix > lastSuffix) {
-        this.showHelper();
+        var len = text.length - lastPrefix,
+            str = text.substr(lastPrefix + 1, len);
+        this.showHelper(str);
       }
       else if(lastSuffix > lastPrefix) {
         this.hideHelper();
       }
+    },
+    helperArrowUp: function() {
+      var visibleRows = this.helper.find('tr.visible');
+
+      var previous = false;
+      visibleRows.each(function(index, row) {
+        if(previous === false) {
+          if($(row).hasClass(ACTIVE_CLASS)) {
+            $(row).removeClass(ACTIVE_CLASS);
+            previous = index - 1;
+            if(index > 0) {
+              visibleRows.eq(previous).addClass(ACTIVE_CLASS);
+            }
+          }
+        }
+      });
+
+      activeRows = this.helper.find('tr.' + ACTIVE_CLASS);
+      if(activeRows.length === 0) {
+        visibleRows.last().addClass(ACTIVE_CLASS);
+      }
+
+      $('tr.' + ACTIVE_CLASS)[0].scrollIntoView();
+    },
+    helperArrowDown: function() {
+      var visibleRows = this.helper.find('tr.visible');
+
+      var next = false;
+      visibleRows.each(function(index, row) {
+
+        if(next === false) {
+          if($(row).hasClass(ACTIVE_CLASS)) {
+            $(row).removeClass(ACTIVE_CLASS);
+            next = index + 1;
+          }
+        }
+        else {
+          if(index === next) {
+            $(row).addClass(ACTIVE_CLASS);
+          }
+        }
+      });
+
+      activeRows = this.helper.find('tr.' + ACTIVE_CLASS);
+      if(activeRows.length === 0) {
+        visibleRows.first().addClass(ACTIVE_CLASS);
+      }
+
+      $('tr.' + ACTIVE_CLASS)[0].scrollIntoView();
+    },
+    insertWord: function() {
+      var word = this.helper.find('tr.' + ACTIVE_CLASS).first().attr('data-word'),
+          el = $(this.element),
+          oldValue = el.val(),
+          lastPrefix = oldValue.lastIndexOf(this.options.prefix),
+          newValue = oldValue.substr(0, lastPrefix+1) + word + this.options.suffix;
+
+      el.val(newValue).trigger('input');
+      this.hideHelper();
     },
     init: function() {
       var plugin = this,
@@ -147,7 +266,7 @@
           lastChar,
           caret,
           triggerEvents = 'input paste',
-          hideEvents = 'blur';
+          hideEvents = 'chickenwings'; //'blur';
 
       switch(tagName) {
         case 'input':
