@@ -5,6 +5,28 @@
       defaults = {
         prefix: '(',
         suffix: ')'
+      },
+
+      HELPER_STYLE = {
+        'background': 'white',
+        'border': '1px solid lightgray',
+        'box-shadow': '0 1px 2px 0px rgba(0,0,0,.25)',
+        'box-sizing': 'border-box',
+        'font': '1em "Helvetica Neue", Arial',
+        'max-height': '200px',
+        'overflow-y': 'auto',
+        'padding': '5px',
+        'position': 'absolute',
+        'text-align': 'left',
+        'z-index': '100000',
+      },
+
+      ACTIVE_CLASS = 'active',
+      ACTIVE_STYLE = {
+        "background": "#eeeeee"
+      },
+      INACTIVE_STYLE = {
+        "background": "transparent"
       };
 
   function Plugin( element, options, dictionary ) {
@@ -16,8 +38,6 @@
     this.helper = null;
     this.init();
   }
-
-  var ACTIVE_CLASS = 'asciimoji-active';
 
   Plugin.prototype = {
     getCaret: function(el) {
@@ -80,15 +100,9 @@
     },
     createHelper: function() {
 
+      this.destroyHelper();
+
       var plugin = this;
-
-      var styles = $('<style></style>');
-      var css = '.' + ACTIVE_CLASS + ' { background: lightblue }';
-
-      styles.html(css);
-
-      $('head').append(styles);
-
       var dictionary = asciimoji();
       var symmetricalDictionary = {};
 
@@ -105,7 +119,7 @@
         if(typeof symmetricalDictionary[term] == 'function') {
           value = symmetricalDictionary[term]();
         }
-        table+= '<tr data-word="'+term+'"><td>'+term+'</td><td>'+value+'</td></tr>';
+        table+= '<tr data-word="'+term+'" style="height:40px"><td style="padding:5px 10px;border-radius:5px 0 0 5px">'+term+'</td><td style="padding:5px 10px;border-radius:0 5px 5px 0">'+value+'</td></tr>';
       }
 
       table += '</table>';
@@ -118,31 +132,42 @@
       });
 
       this.helper = $('<div id="asciimoji-helper"></div>');
-      this.helper.css({
-        'background': 'aliceblue',
-        'border': '1px solid lightblue',
-        'max-height': '200px',
-        'overflow-y': 'auto',
-        'padding': '5px',
-        'position': 'absolute',
-        'text-align': 'left',
-      });
+      this.helper.css(HELPER_STYLE);
       this.helper.html(table);
 
       $('body').append(this.helper);
 
       $(this.element).on('keydown', function(e) {
+
+        var tag = this.tagName.toLowerCase();
+        if(tag == 'textarea') {
+          var caret = Measurement.caretPos(this);
+          plugin.helper.css({
+            "top": caret.top + 50 + 'px',
+          });
+        }
+
         switch(e.keyCode) {
-          case 40:  plugin.helperArrowDown();
+          case 40:  // Arrow down
+                    e.preventDefault();
+                    plugin.helperArrowDown();
                     break;
 
-          case 38:  plugin.helperArrowUp();
+          case 38:  // Arrow up
+                    e.preventDefault();
+                    plugin.helperArrowUp();
                     break;
 
-          case 27:  plugin.hideHelper();
+          case 27:  // Escape
+                    plugin.hideHelper();
                     break;
 
-          case 13:  plugin.insertWord();
+          case  9:  // Tab
+          case 13:  // Return
+                    if($('#asciimoji-helper').is(':visible')) {
+                      e.preventDefault();
+                      plugin.insertWord();
+                    }
                     break;
         }
       });
@@ -157,31 +182,55 @@
         return;
       }
 
-      var rect = this.element.getBoundingClientRect();
+      var tag = this.element.tagName.toLowerCase(),
+          rect = this.element.getBoundingClientRect();
 
-      // console.log(rect);
+      if(tag == 'input') {
+        this.helper.css({
+          "top": rect.bottom + 'px',
+          "left": rect.left + 'px',
+          "min-width": rect.width + 'px',
+        });
+      }
+      else if(tag == 'textarea') {
+        var caret = Measurement.caretPos(this.element);
+        this.helper.css({
+          "top": caret.top + 50 + 'px',
+          "left": rect.left + 'px',
+          "min-width": rect.width + 'px',
+        });
+      }
 
-      this.helper.css({
-        top: rect.left + 'px',
-        left: rect.bottom + 'px',
-        width: rect.width + 'px',
-      });
+      // reset filtering, hide all rows
+      this.helper
+        .find('tr')
+        .removeClass('visible')
+        .removeClass(ACTIVE_CLASS)
+        .css(INACTIVE_STYLE)
+        .css('display', 'none');
 
-      this.helper.find('tr').removeClass('visible').css('display', 'none').removeClass(ACTIVE_CLASS);
-
+      // get matching rows
       var visibleRows = this.helper.find('td:contains('+str.toLowerCase()+')').parents('tr');
 
+      // no matches, hide helper
       if(visibleRows.length === 0) {
         this.hideHelper();
       }
+      // show matching rows
       else {
         visibleRows.addClass('visible').css('display', 'table-row');
-        visibleRows.last().addClass(ACTIVE_CLASS);
+        visibleRows.last().addClass(ACTIVE_CLASS).css(ACTIVE_STYLE);
         this.helper.show();
       }
     },
     hideHelper: function() {
       $('#asciimoji-helper').hide();
+    },
+    destroyHelper: function() {
+      $('#asciimoji-helper').remove();
+      this.helper = null;
+
+      $('#_dummy').remove();
     },
     toggleHelper: function(text) {
       var lastPrefix = text.lastIndexOf(this.options.prefix),
@@ -203,10 +252,10 @@
       visibleRows.each(function(index, row) {
         if(previous === false) {
           if($(row).hasClass(ACTIVE_CLASS)) {
-            $(row).removeClass(ACTIVE_CLASS);
+            $(row).removeClass(ACTIVE_CLASS).css(INACTIVE_STYLE);
             previous = index - 1;
             if(index > 0) {
-              visibleRows.eq(previous).addClass(ACTIVE_CLASS);
+              visibleRows.eq(previous).addClass(ACTIVE_CLASS).css(ACTIVE_STYLE);
             }
           }
         }
@@ -214,10 +263,10 @@
 
       activeRows = this.helper.find('tr.' + ACTIVE_CLASS);
       if(activeRows.length === 0) {
-        visibleRows.last().addClass(ACTIVE_CLASS);
+        visibleRows.last().addClass(ACTIVE_CLASS).css(ACTIVE_STYLE);
       }
 
-      $('tr.' + ACTIVE_CLASS)[0].scrollIntoView();
+      this.helperShowActiveTerm();
     },
     helperArrowDown: function() {
       var visibleRows = this.helper.find('tr.visible');
@@ -227,23 +276,28 @@
 
         if(next === false) {
           if($(row).hasClass(ACTIVE_CLASS)) {
-            $(row).removeClass(ACTIVE_CLASS);
+            $(row).removeClass(ACTIVE_CLASS).css(INACTIVE_STYLE);
             next = index + 1;
           }
         }
         else {
           if(index === next) {
-            $(row).addClass(ACTIVE_CLASS);
+            $(row).addClass(ACTIVE_CLASS).css(ACTIVE_STYLE);
           }
         }
       });
 
       activeRows = this.helper.find('tr.' + ACTIVE_CLASS);
       if(activeRows.length === 0) {
-        visibleRows.first().addClass(ACTIVE_CLASS);
+        visibleRows.first().addClass(ACTIVE_CLASS).css(ACTIVE_STYLE);
       }
 
+      this.helperShowActiveTerm();
+    },
+    helperShowActiveTerm: function() {
       $('tr.' + ACTIVE_CLASS)[0].scrollIntoView();
+      var top = this.helper.scrollTop() - 7;
+      this.helper.scrollTop(top);
     },
     insertWord: function() {
       var word = this.helper.find('tr.' + ACTIVE_CLASS).first().attr('data-word'),
@@ -266,7 +320,7 @@
           lastChar,
           caret,
           triggerEvents = 'input paste',
-          hideEvents = 'chickenwings'; //'blur';
+          destroyEvents = 'blur';
 
       switch(tagName) {
         case 'input':
@@ -281,14 +335,12 @@
               el.empty().val(newValue);
               caret = plugin.lastDiff(oldValue,newValue);
 
-              // el.change();
-
               plugin.setCaret(el,caret);
             }
           });
 
-          el.off(hideEvents).on(hideEvents, function() {
-            plugin.hideHelper();
+          el.off(destroyEvents).on(destroyEvents, function() {
+            plugin.destroyHelper();
           });
           break;
         default:
@@ -305,9 +357,6 @@
                   if(oldValue != newValue) {
                     node.nodeValue = newValue;
                     caret = plugin.lastDiff(oldValue,newValue);
-
-                    // el.change();
-                    // console.log('contenteditable, change');
 
                     if(typeof window.getSelection != "undefined" && typeof document.createRange != "undefined") {
                       var range = document.createRange();
