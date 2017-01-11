@@ -444,6 +444,16 @@ var asciimoji = function(text, options, userDictionary) {
         return transpose(text.toLowerCase(), table, true);
       }
     },
+    fliptexttable: {
+      words: ['fliptexttable'],
+      ascii: function (text) {
+        text = text || 'flipped text as as table';
+
+        var flippedText = dictionary['fliptext'].ascii(text);
+
+        return '(ノ ゜Д゜)ノ ︵ ' + flippedText; 
+      }
+    },    
     flipped: {
       words: ['flipped', 'heavytable'],
       ascii: '┬─┬﻿ ︵ /(.□. \\）'
