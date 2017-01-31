@@ -54,10 +54,6 @@ var asciimoji = function(text, options, userDictionary) {
       words: ['awkward'],
       ascii: '•͡˘㇁•͡˘'
     },
-    barcode: {
-      words: ['barcode'],
-      ascii: '█║▌│ █│║▌ ║││█║▌ │║║█║ │║║█║'
-    },
     bat: {
       words: ['bat'],
       ascii: '/|\\( ;,;)/|\\'

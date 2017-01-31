@@ -100,6 +100,8 @@
     },
     createHelper: function() {
 
+      console.log('createHelper');
+
       this.destroyHelper();
 
       var plugin = this;
@@ -137,6 +139,14 @@
 
       $('body').append(this.helper);
 
+      this.helper.on('click', 'tr', function(e) {
+        var tr = e.target;
+        console.log(tr);
+
+        var word = $(tr).data('word');
+        console.log(word);
+      });
+
       $(this.element).on('keydown', function(e) {
 
         var tag = this.tagName.toLowerCase();
@@ -173,6 +183,9 @@
       });
     },
     showHelper: function(str) {
+
+      console.log('showHelper, '+str);
+
       if(this.helper === null) {
         this.createHelper();
       }
@@ -224,15 +237,24 @@
       }
     },
     hideHelper: function() {
+
+      console.log('hideHelper');
+
       $('#asciimoji-helper').hide();
     },
     destroyHelper: function() {
+
+      console.log('destroyHelper');
+
       $('#asciimoji-helper').remove();
       this.helper = null;
 
       $('#_dummy').remove();
     },
     toggleHelper: function(text) {
+
+      console.log('toggleHelper, '+text);
+
       var lastPrefix = text.lastIndexOf(this.options.prefix),
           lastSuffix = text.lastIndexOf(this.options.suffix);
 
@@ -246,6 +268,9 @@
       }
     },
     helperArrowUp: function() {
+
+      console.log('helperArrowUp');
+
       var visibleRows = this.helper.find('tr.visible');
 
       var previous = false;
@@ -269,6 +294,9 @@
       this.helperShowActiveTerm();
     },
     helperArrowDown: function() {
+
+      console.log('helperArrowDown');
+
       var visibleRows = this.helper.find('tr.visible');
 
       var next = false;
@@ -295,11 +323,17 @@
       this.helperShowActiveTerm();
     },
     helperShowActiveTerm: function() {
+
+      console.log('helperShowActiveTerm');
+
       $('tr.' + ACTIVE_CLASS)[0].scrollIntoView();
       var top = this.helper.scrollTop() - 7;
       this.helper.scrollTop(top);
     },
     insertWord: function() {
+
+      console.log('insertWord');
+
       var word = this.helper.find('tr.' + ACTIVE_CLASS).first().attr('data-word'),
           el = $(this.element),
           oldValue = el.val(),

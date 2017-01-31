@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "ASCIImoji",
   "description": "Asciify ALL the websites!",
-  "version": "1.4.1",
+  "version": "1.5",
   "permissions": ["storage", "tabs", "http://*/*", "https://*/*"],
   "icons": {
     "16": "images/icon-16.png",
@@ -12,7 +12,13 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["js/jquery-2.1.1.min.js", "js/asciimoji.js", "js/asciimoji.jquery.js", "js/script.js"],
+      "js": [
+        "js/jquery-2.1.1.min.js",
+        "js/caretposition.js",
+        "js/asciimoji.js",
+        "js/asciimoji.jquery.js",
+        "js/script.js"
+      ],
       "all_frames": true
     }
   ],
