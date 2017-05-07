@@ -5,9 +5,9 @@ ASCIImoji is a small JavaScript function enabling ASCII emoticons in text inputs
 **Features**
 
 * support for currently 280 different built-in emoticons/symbols
-* support for interactive emoticons with parameters
+* support for interactive emoticons with arguments
 * support for additional custom emoticons
-* configurable keyword delimiters (*defaults to brackets ()*)
+* configurable keyword delimiters (*defaults to parentheses ( )*)
 * jQuery plugin
 
 Current version: 1.4.3
