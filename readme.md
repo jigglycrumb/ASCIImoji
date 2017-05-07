@@ -1,9 +1,6 @@
 # ASCIImoji
 
-ASCIImoji is a small JavaScript function enabling ASCII emoticons in text.
-For example **(bear)** will be converted to **ʕ·͡ᴥ·ʔ﻿**.
-
-The repository also contains a jQuery plugin for super easy usage.
+ASCIImoji is a small JavaScript function enabling ASCII emoticons in text inputs.
 
 **Features**
 
@@ -32,7 +29,7 @@ If you want to change the delimiters of the emoticon keywords, add an options ob
 
 ## Using the jQuery plugin
 
-Call $.asciimoji on your selector:
+Call the plugin on your selector:
 
     $('input,textarea').asciimoji();
 
