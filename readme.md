@@ -1,4 +1,5 @@
-#ASCIImoji
+# ASCIImoji
+
 ASCIImoji is a small JavaScript function enabling the easy usage of ASCII emoticons in text.
 For example **(bear)** will be converted to **ʕ·͡ᴥ·ʔ﻿**.
 
@@ -6,15 +7,15 @@ The repository also contains a jQuery plugin for super easy usage.
 
 **Features**
 
-* support for currently 230 different built-in emoticons/symbols
+* support for currently 280 different built-in emoticons/symbols
 * support for interactive emoticons with parameters
 * support for additional self-defined emoticons
 * delimiters of the emoticon keywords can be configured (*defaults to brackets ()*)
 * jQuery plugin
 
-Current version: 1.4.2
+Current version: 1.4.3
 
-##Basic usage
+## Basic usage
 
 Simple: Feed it some text and the processed string gets returned.
 
@@ -27,7 +28,7 @@ If you want to change the delimiters of the emoticon keywords, add an options ob
       suffix: ']'
     });
 
-##Using the jQuery plugin
+## Using the jQuery plugin
 
 Again, simple:
 
@@ -46,7 +47,7 @@ You can also do live binding so that elements added to the DOM later will have A
       $(this).asciimoji();
     });
 
-##Adding self-defined emoticons to the dictionary
+## Adding self-defined emoticons to the dictionary
 
 Define your dictionary like this:
 
