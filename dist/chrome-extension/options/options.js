@@ -14,6 +14,12 @@ $(function() { // document.ready
     return decodeURIComponent(escape(window.atob(str)));
   }
 
+  function customCount() {
+    var count = Object.getOwnPropertyNames(storage.dictionary).length;
+    $("#custom-count").text("("+count+")");
+    return count;
+  }
+
   function addRow(settings, table, hash, words, ascii, deleteButton) {
     var wordsHTML = [],
         deleteButton = deleteButton || false,
@@ -29,6 +35,8 @@ $(function() { // document.ready
     });
 
     table.find('tbody').append('<tr data-hash="'+hash+'"><td>'+wordsHTML.join('<br>')+interactive+'</td><td><span class="ascii fl">'+asciiStr+'</span>'+deleteButtonHTML+'</td></tr>');
+
+    customCount();
   }
 
   // load storage
@@ -36,21 +44,25 @@ $(function() { // document.ready
     storage.settings = result.settings || {
       prefix: '(',
       suffix: ')',
-      submission_enabled: false
     };
 
     storage.dictionary = result.dictionary || {};
 
     $('#prefix').val(storage.settings.prefix);
     $('#suffix').val(storage.settings.suffix);
-    $('#enable-submission').prop('checked',storage.settings.submission_enabled);
 
-    if(Object.getOwnPropertyNames(storage.dictionary).length > 0) {
+    if(customCount() > 0) {
       $('#no-custom-emoticons').remove();
       displayEmoticons( $('#user-list'), storage.dictionary, true );
     }
 
-    displayEmoticons( $('#default-list'), asciimoji() );
+    var builtinDict = asciimoji();
+
+    displayEmoticons( $('#default-list'), builtinDict );
+
+    var builtinCount = Object.getOwnPropertyNames(builtinDict).length;
+
+    $("#builtin-count").text("("+builtinCount+")");
   }
 
   chrome.storage.sync.get(loadStorage);
@@ -108,16 +120,6 @@ $(function() { // document.ready
         $('#no-custom-emoticons').remove();
 
         addRow(storage.settings, $('#user-list'), hash, words, ascii, true );
-
-        // handle submission
-        if(storage.settings.submission_enabled) {
-          var url = 'http://asciimoji.com/submit.php',
-              data = {
-                words: words.join(', '),
-                ascii: ascii
-              };
-          $.post(url, data);
-        }
       });
     }
   });
@@ -130,13 +132,8 @@ $(function() { // document.ready
       row.remove();
       delete storage.dictionary[hash];
       chrome.storage.sync.set(storage);
+      customCount();
     }
-  });
-
-  // make submission toggle auto-save its value
-  $('#enable-submission').on('change', function() {
-    storage.settings.submission_enabled = $(this).prop('checked');
-    chrome.storage.sync.set(storage);
   });
 
   // write the current year to the footer copyright message
