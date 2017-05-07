@@ -1,8 +1,8 @@
 node_modules
 release
-resource
+resources
+changes.txt
+todo.txt
 config.php
 googlea7755739bc343761.html
-key.pem
-todo.txt
-changes.txt
+src/chrome-extension/key.pem
