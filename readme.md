@@ -1,6 +1,6 @@
 # ASCIImoji
 
-ASCIImoji is a small JavaScript function enabling the easy usage of ASCII emoticons in text.
+ASCIImoji is a small JavaScript function enabling ASCII emoticons in text.
 For example **(bear)** will be converted to **ʕ·͡ᴥ·ʔ﻿**.
 
 The repository also contains a jQuery plugin for super easy usage.
@@ -9,28 +9,30 @@ The repository also contains a jQuery plugin for super easy usage.
 
 * support for currently 280 different built-in emoticons/symbols
 * support for interactive emoticons with parameters
-* support for additional self-defined emoticons
-* delimiters of the emoticon keywords can be configured (*defaults to brackets ()*)
+* support for additional custom emoticons
+* configurable keyword delimiters (*defaults to brackets ()*)
 * jQuery plugin
 
 Current version: 1.4.3
 
 ## Basic usage
 
-Simple: Feed it some text and the processed string gets returned.
+Feed it some text and the processed string gets returned.
 
-    var asciifiedText = asciimoji('Some plain text containing keywords, like (yay)!');
+    var asciifiedText = asciimoji('Hello, this is (bear)');
+    // Hello, this is ʕ·͡ᴥ·ʔ﻿
 
 If you want to change the delimiters of the emoticon keywords, add an options object with your values to the call.
 
-    var customAsciifiedText = asciimoji('Some text with custom delimiters. [dunno]', {
+    var customAsciifiedText = asciimoji('Adventure time with [finn] and [jake]', {
       prefix: '[',
       suffix: ']'
     });
+    // Adventure time with | (• ◡•)| and (❍ᴥ❍ʋ)
 
 ## Using the jQuery plugin
 
-Again, simple:
+Call $.asciimoji on your selector:
 
     $('input,textarea').asciimoji();
 
@@ -43,11 +45,11 @@ If you want custom delimiters, pass in the options object:
 
 You can also do live binding so that elements added to the DOM later will have ASCIImoji enabled:
 
-    $(document).on('focus','textarea',function(){
+    $(document).on('focus', 'textarea', function() {
       $(this).asciimoji();
     });
 
-## Adding self-defined emoticons to the dictionary
+## Adding custom emoticons to the dictionary
 
 Define your dictionary like this:
 
@@ -65,7 +67,7 @@ Add your dictionary as additional parameter to the call:
 
 or with the jQuery plugin:
 
-    $(document).on('focus','textarea',function(){
+    $(document).on('focus', 'textarea', function() {
       $(this).asciimoji(options, myEmoticons);
     });
 
