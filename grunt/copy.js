@@ -47,8 +47,6 @@ module.exports = {
     src: [
       'googlea7755739bc343761.html',
       'index.html',
-      'config.php',
-      'submit.php',
       'images/icon-16.png',
       'images/header.png',
     ],
