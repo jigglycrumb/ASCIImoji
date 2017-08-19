@@ -53,7 +53,7 @@ $(function(){
       return;
     }
 
-    $.post('submit.php',data,function(response){
+    $.post('http://scripts.hpcodecraft.me/asciimoji.php', data, function(response){
       var message = 'Submission of the emoticon failed. This happened most likely because someone else already submitted the same emoticon before. ¯\\_(ツ)_/¯',
         messageClass = 'danger';
 

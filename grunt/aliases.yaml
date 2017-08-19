@@ -7,3 +7,12 @@ default:
   - 'uglify'
   - 'compress'
   - 'clean:postbuild'
+
+homepage:
+  - 'clean:homepage'
+  - 'copy:homepage'
+  - 'concat:homepage'
+  - 'cssmin:homepage'
+  - 'replace:homepage'
+  - 'uglify:homepage'
+  - 'clean:homepagePostBuild'
