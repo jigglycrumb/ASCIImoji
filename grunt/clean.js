@@ -5,7 +5,13 @@ module.exports = {
   postbuild: {
     src: [
       'dist/chrome-extension/key.pem',
-      'dist/homepage/index.js',
+      'dist/homepage/index.js'
     ]
   },
+  homepage: {
+    src: 'dist/homepage/**/*'
+  },
+  homepagePostBuild: {
+    src: 'dist/homepage/index.js'
+  }
 };
