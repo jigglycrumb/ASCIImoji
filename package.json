@@ -1,6 +1,6 @@
 {
   "name": "ASCIImoji",
-  "version": "1.4.4",
+  "version": "1.4.5",
   "description": "Easy ASCII emoticons",
   "main": "index.js",
   "scripts": {

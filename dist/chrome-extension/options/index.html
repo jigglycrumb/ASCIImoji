@@ -39,12 +39,12 @@
       <fieldset>
         <div class="pure-g">
           <div class="pure-u-1-6">
-            <label for="prefix">Emoticon prefix</label>
+            <label for="prefix">Prefix</label>
             <input id="prefix" class="pure-input-1-4" type="text" value="(" maxlength="1">
           </div>
 
           <div class="pure-u-1-6">
-            <label for="suffix">Emoticon suffix</label>
+            <label for="suffix">Suffix</label>
             <input id="suffix" class="pure-input-1-4" type="text" value=")" maxlength="1">
           </div>
         </div>
@@ -52,6 +52,37 @@
     </form>
 
     <div id="message"></div>
+
+    <h2>Disabled pages</h2>
+
+    <p>
+      <i>
+        You can disable ASCIImoji on selected domains by adding them below.
+      </i>
+    </p>
+
+    <form class="pure-form" style="margin-bottom:.25em;">
+      <fieldset>
+        <input type="text" id="disabled-pages-input" class="pure-input-2-3" placeholder="Domain, e.g. facebook.com" title="Enter top level domain name, e.g. facebook.com">
+        <button type="button" id="disabled-pages-add" class="pure-button pure-button-success pure-button-small">add</button>
+      </fieldset>
+    </form>
+
+    <table id="disabled-pages-list" class="pure-table pure-table-horizontal">
+      <thead>
+        <tr>
+          <th>Domain</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="no-disabled-pages">
+          <td colspan="2">ASCIImoji is enabled on all pages!</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <br>
+
 
 
     <h2>Your Custom Emoticons
