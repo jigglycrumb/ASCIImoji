@@ -4,6 +4,14 @@ default:
   - 'concat'
   - 'cssmin'
   - 'replace'
+  - 'clean:key'
+
+release:
+  - 'clean:dist'
+  - 'copy'
+  - 'concat'
+  - 'cssmin'
+  - 'replace'
   - 'uglify'
   - 'compress'
   - 'clean:postbuild'
