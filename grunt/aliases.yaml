@@ -4,9 +4,18 @@ default:
   - 'concat'
   - 'cssmin'
   - 'replace'
+  - 'clean:key'
+
+release:
+  - 'clean:dist'
+  - 'copy'
+  - 'concat'
+  - 'cssmin'
+  - 'replace'
   - 'uglify'
   - 'compress'
-  - 'clean:postbuild'
+  - 'copy:homepageRelease'
+  - 'clean:release'
 
 homepage:
   - 'clean:homepage'
