@@ -14,7 +14,8 @@ release:
   - 'replace'
   - 'uglify'
   - 'compress'
-  - 'clean:postbuild'
+  - 'copy:homepageRelease'
+  - 'clean:release'
 
 homepage:
   - 'clean:homepage'

@@ -6,8 +6,10 @@ var storage = {
 };
 
 function init(result) {
-  storage.settings = result.settings || { prefix: "(", suffix: ")" };
-  storage.dictionary = result.dictionary || {};
+  var defaultSettings = { prefix: "(", suffix: ")", contextMenu: true };
+
+  storage.settings = Object.assign({}, defaultSettings, result.settings);
+  storage.dictionary = Object.assign({}, result.dictionary);
 
   elems.forEach(function(elem) {
     $(document).on("input paste click", elem, function() {
@@ -35,15 +37,24 @@ function insertAtCursor(sField, sValue) {
     var nStart = sField.selectionStart;
     var nEnd = sField.selectionEnd;
 
-    sField.value =
-      sField.value.substring(0, nStart) +
-      sValue +
-      sField.value.substring(nEnd, sField.value.length);
+    sField.value = replaceInString(sField.value, sValue, nStart, nEnd);
     sField.selectionStart = nStart + sValue.length;
     sField.selectionEnd = nStart + sValue.length;
   } else {
-    sField.value += sValue;
+    switch (sField.tagName.toLowerCase()) {
+      case "div":
+        sField.innerHTML += sValue;
+        break;
+
+      default:
+        sField.value += sValue;
+        break;
+    }
   }
+}
+
+function replaceInString(str, newStr, start, end) {
+  return str.substring(0, start) + newStr + str.substring(end, str.length);
 }
 
 // load storage and initialize

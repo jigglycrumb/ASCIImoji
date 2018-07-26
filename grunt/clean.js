@@ -13,5 +13,8 @@ module.exports = {
   },
   key: {
     src: "dist/chrome-extension/key.pem"
+  },
+  release: {
+    src: ["dist/chrome-extension", "dist/homepage"]
   }
 };
