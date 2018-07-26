@@ -7,52 +7,54 @@
 .pure-button-error,
 .pure-button-warning,
 .pure-button-secondary {
-    color: white;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  color: white;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
 }
 
 .pure-button-success {
-    background: rgb(28, 184, 65); /* this is a green */
+  background: rgb(28, 184, 65); /* this is a green */
 }
 
 .pure-button-error {
-    background: rgb(202, 60, 60); /* this is a maroon */
+  background: rgb(202, 60, 60); /* this is a maroon */
 }
 
 .pure-button-warning {
-    background: rgb(223, 117, 20); /* this is an orange */
+  background: rgb(223, 117, 20); /* this is an orange */
 }
 
 .pure-button-secondary {
-    background: rgb(66, 184, 221); /* this is a light blue */
+  background: rgb(66, 184, 221); /* this is a light blue */
 }
 
 .pure-button-xsmall {
-    font-size: 70%;
+  font-size: 70%;
 }
 
 .pure-button-small {
-    font-size: 90% !important;
+  font-size: 90% !important;
 }
 
 .pure-button-large {
-    font-size: 110%;
+  font-size: 110%;
 }
 
 .pure-button-xlarge {
-    font-size: 125%;
+  font-size: 125%;
 }
-
 
 /* site styling */
 body {
   text-align: center;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: .95rem;
+  font-size: 0.95rem;
   line-height: 150%;
 }
 
-a, a:hover, a:active, a:visited {
+a,
+a:hover,
+a:active,
+a:visited {
   color: #32cd32;
 }
 
@@ -84,7 +86,7 @@ th:first-child {
   width: 32%;
 }
 
-label[for=enable-submission] {
+label[for="enable-submission"] {
   padding: 0 1em;
 }
 
@@ -99,7 +101,7 @@ label[for=enable-submission] {
 }
 
 footer {
-  font-size: .8em;
+  font-size: 0.8em;
   font-style: italic;
   margin-bottom: 2em;
   margin-top: 2em;
@@ -110,12 +112,12 @@ footer > div:nth-child(2) {
 }
 
 .ascii {
-  padding: .25em 0;
+  padding: 0.25em 0;
   font-size: 1.3rem;
 }
 
 .delete-button {
-  padding: .5em 1em;
+  padding: 0.5em 1em;
   font-weight: bold;
 }
 
@@ -135,7 +137,21 @@ tr:nth-child(2n) td {
   background: #f2f2f2;
 }
 
-sup a, sup a:hover {
+sup a,
+sup a:hover {
   text-decoration: none;
   cursor: help;
+}
+
+.pure-u-2-3 {
+  margin-bottom: 2em;
+  padding-top: 1.5em;
+}
+
+label[for="context-menu-enabled"] {
+  margin-top: 1.5em;
+}
+
+#context-menu-enabled {
+  margin-right: 0.25em;
 }
