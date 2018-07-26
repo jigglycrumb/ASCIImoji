@@ -4,20 +4,20 @@ ASCIImoji is a small JavaScript function enabling ASCII emoticons in text inputs
 
 **Features**
 
-* support for currently 280 different built-in emoticons/symbols
-* support for interactive emoticons with arguments
-* support for additional custom emoticons
-* configurable keyword delimiters (*defaults to parentheses ( )*)
-* jQuery plugin
+- support for currently 296 different built-in emoticons/symbols
+- support for interactive emoticons with arguments
+- support for additional custom emoticons
+- configurable keyword delimiters (_defaults to parentheses ( )_)
+- jQuery plugin
 
-Current version: 1.4.3
+Current version: 1.5.0
 
 ## Basic usage
 
 Feed it some text and the processed string gets returned.
 
     var asciifiedText = asciimoji('Hello, this is (bear)');
-    // Hello, this is ʕ·͡ᴥ·ʔ﻿
+    // Hello, this is ʕ·͡ᴥ·ʔ
 
 If you want to change the delimiters of the emoticon keywords, add an options object with your values to the call.
 

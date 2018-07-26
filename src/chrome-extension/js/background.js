@@ -1,5 +1,6 @@
 var contexts = ["editable"];
 var dict = {};
+var settings = {};
 var letters = "#abcdefghijklmnopqrstuvwxyz".split("");
 var dictByLetter = {};
 var longestLength = 0;
@@ -61,8 +62,13 @@ function setupContextMenus() {
 }
 
 function init(result) {
-  dict = Object.assign({}, result.dictionary, asciimoji());
-  setupContextMenus();
+  var defaultSettings = { prefix: "(", suffix: ")", contextMenu: true };
+  settings = Object.assign({}, defaultSettings, result.settings);
+
+  if (settings.contextMenu) {
+    dict = Object.assign({}, result.dictionary, asciimoji());
+    setupContextMenus();
+  }
 }
 
 // load storage and initialize
