@@ -6,11 +6,11 @@ module.exports = {
   },
   homepage: {
     src: [
-      'src/homepage/bower_components/bootstrap/dist/css/bootstrap.css',
-      'src/homepage/bower_components/bootstrap/dist/css/bootstrap-theme.css',
-      'src/homepage/homepage.css',
+      "src/homepage/bower_components/bootstrap/dist/css/bootstrap.css",
+      "src/homepage/bower_components/bootstrap/dist/css/bootstrap-theme.css",
+      "src/homepage/homepage.css"
     ],
     // the location of the resulting CSS file
-    dest: 'dist/homepage/index.min.css'
+    dest: "docs/index.min.css"
   }
 };
