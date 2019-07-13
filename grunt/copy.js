@@ -32,16 +32,16 @@ module.exports = {
     expand: true,
     cwd: "src/homepage",
     src: [
-      "googlea7755739bc343761.html",
+      // "googlea7755739bc343761.html",
       "index.html",
       "images/icon-16.png",
       "images/header.png"
     ],
-    dest: "dist/homepage/"
+    dest: "docs/"
   },
   homepageRelease: {
     expand: true,
-    cwd: "dist/homepage",
+    cwd: "docs",
     src: [
       "index.html",
       "images/icon-16.png",

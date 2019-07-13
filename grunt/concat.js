@@ -6,13 +6,13 @@ module.exports = {
   },
   homepage: {
     src: [
-      'src/homepage/bower_components/jquery/jquery.js',
-      'src/homepage/bower_components/bootstrap/dist/js/bootstrap.js',
-      'src/asciimoji.js',
-      'src/jquery/asciimoji.jquery.js',
-      'src/homepage/homepage.js',
+      "src/homepage/bower_components/jquery/jquery.js",
+      "src/homepage/bower_components/bootstrap/dist/js/bootstrap.js",
+      "src/asciimoji.js",
+      "src/jquery/asciimoji.jquery.js",
+      "src/homepage/homepage.js"
     ],
     // the location of the resulting JS file
-    dest: 'dist/homepage/index.js'
+    dest: "docs/index.js"
   }
 };

@@ -3,18 +3,18 @@ module.exports = {
     src: "dist/**/*"
   },
   postbuild: {
-    src: ["dist/chrome-extension/key.pem", "dist/homepage/index.js"]
+    src: ["dist/chrome-extension/key.pem", "docs/index.js"]
   },
   homepage: {
-    src: "dist/homepage/**/*"
+    src: ["docs/images/**/*", "docs/index.**"]
   },
   homepagePostBuild: {
-    src: "dist/homepage/index.js"
+    src: "docs/index.js"
   },
   key: {
     src: "dist/chrome-extension/key.pem"
   },
   release: {
-    src: ["dist/chrome-extension", "dist/homepage"]
+    src: ["dist/chrome-extension"]
   }
 };
