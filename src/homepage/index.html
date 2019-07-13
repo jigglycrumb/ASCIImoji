@@ -212,8 +212,19 @@
 
     <script src="index.min.js"></script>
     <script>
+      var site = "asciimoji.com";
       fetch(
-        "https://maker.ifttt.com/trigger/visitor_asciimoji.com/with/key/dSscp_OKcfnlqc4jitN7yc"
+        "https://maker.ifttt.com/trigger/visitor_" +
+          site +
+          "/with/key/dSscp_OKcfnlqc4jitN7yc",
+        {
+          method: "POST",
+          mode: "no-cors",
+          body: JSON.stringify({
+            site: site,
+            url: document.location.href
+          })
+        }
       );
     </script>
   </body>
