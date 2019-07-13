@@ -1,136 +1,220 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="author" content="Volker Wieban">
-  <meta name="description" content="ASCII emoticons for the web.">
-  <meta name="keywords" content="ascii, emoticon, smiley, emoji, chat, messaging, jquery, javascript">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="author" content="Volker Wieban" />
+    <meta name="description" content="ASCII emoticons for the web." />
+    <meta
+      name="keywords"
+      content="ascii, emoticon, smiley, emoji, chat, messaging, jquery, javascript"
+    />
 
-  <title>ASCIImoji</title>
-  <link rel="icon" type="image/png" href="images/icon-16.png" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="index.min.css">
-</head>
-<body>
+    <title>ASCIImoji</title>
+    <link rel="icon" type="image/png" href="images/icon-16.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.min.css" />
+  </head>
+  <body>
+    <div class="jumbotron">
+      <div class="container">
+        <img src="images/header.png" alt="ASCIImoji" />
+        <p>ASCII emoticons for the web.</p>
+      </div>
+    </div>
 
-  <div class="jumbotron">
     <div class="container">
-      <img src="images/header.png" alt="ASCIImoji">
-      <p>ASCII emoticons for the web.</p>
-    </div>
-  </div>
-
-  <div class="container">
-    <div class="row">
-      <a name="about"></a>
-      <div class="col-lg-12">
-        <h2>What is ASCIImoji?</h2>
-        <p>ASCIImoji brings ASCII emoticons to the web.</p>
-        <p>Wouldn´t it be cool if you could get an emoticon like <strong>ʕ·͡ᴥ·ʔ﻿</strong> just by typing <strong>(bear)</strong>?<br>
-          ASCIImoji´s Chrome Extension lets you do just that, on any website you´re visiting. And unlike most other emoticon packages out there the recipient doesn´t need to install anything extra because the emoticons are just text.
-        </p>
-        <p>The latest version (@@version) has <span id="total-count"></span> different ASCIImojis built in (<a href="#emoticons">see list below</a>). Whether you´re an end-user or a developer, the three available releases got you covered:</p>
-      </div>
-    </div>
-
-    <div class="row">
-      <a name="releases"></a>
-      <div class="col-lg-4">
-        <h2>Chrome extension</h2>
-        <p>The Chrome extension enables ASCIImoji support for all websites. If you want to use ASCIImoji in your daily browsing experience, install this extension. You can even define your own emoticons!</p>
-        <p><a class="btn btn-primary" href="https://chrome.google.com/webstore/detail/asciimoji/pglkjdoamcojlfjbdeenodmpkjkgplik">Install from Chrome Webstore &raquo;</a></p>
-      </div>
-      <div class="col-lg-4">
-        <h2>jQuery plugin</h2>
-        <p>The jQuery plugin makes it easy for developers to integrate ASCIImoji in their websites or web applications. If you´re developing something and already use jQuery, this is your choice.</p>
-        <p><a class="btn btn-info" href="https://github.com/hpcodecraft/ASCIImoji">View at Github &raquo;</a></p>
-     </div>
-      <div class="col-lg-4">
-        <h2>Javascript source</h2>
-        <p>The plain Javascript source is the foundation of the jQuery plugin and the Chrome extension. If you don´t want to include jQuery or use ASCIImoji only programmatically, this is what you´ll want.</p>
-        <p><a class="btn btn-info" href="https://github.com/hpcodecraft/ASCIImoji">View at Github &raquo;</a></p>
-      </div>
-    </div>
-
-    <hr>
-
-    <div class="row">
-      <a name="emoticons"></a>
-      <div class="col-lg-12">
-        <h2>Emoticons</h2>
-        <p>These are the emoticons currently available by default in ASCIImoji.</p>
-        <table class="table table-striped">
-          <thead>
-            <th>You type</th>
-            <th>You get</th>
-          </thead>
-          <tbody id="emoticon-list">
-
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="row">
-      <a name="demo"></a>
-      <div class="col-lg-12">
-        <h2>Demo</h2>
-        <p>Type into the text box and instantly see the results!</p>
-      </div>
-      <div class="col-lg-6">
-        <textarea id="demo-input" class="form-control demo-element" placeholder="Type here"></textarea>
-      </div>
-      <div class="col-lg-6">
-        <div class="panel panel-default demo-element">
-          <div id="demo-output" class="panel-body"></div>
+      <div class="row">
+        <a name="about"></a>
+        <div class="col-lg-12">
+          <h2>What is ASCIImoji?</h2>
+          <p>ASCIImoji brings ASCII emoticons to the web.</p>
+          <p>
+            Wouldn´t it be cool if you could get an emoticon like
+            <strong>ʕ·͡ᴥ·ʔ </strong> just by typing
+            <strong>(bear)</strong>?<br />
+            ASCIImoji´s Chrome Extension lets you do just that, on any website
+            you´re visiting. And unlike most other emoticon packages out there
+            the recipient doesn´t need to install anything extra because the
+            emoticons are just text.
+          </p>
+          <p>
+            The latest version (@@version) has
+            <span id="total-count"></span> different ASCIImojis built in (<a
+              href="#emoticons"
+              >see list below</a
+            >). Whether you´re an end-user or a developer, the three available
+            releases got you covered:
+          </p>
         </div>
       </div>
-    </div>
 
-    <hr>
-
-    <div class="row">
-      <a name="submit"></a>
-      <div class="col-lg-12">
-        <h2>Submit an emoticon</h2>
-        <p>If you know some cool emoticon missing here, please submit it with the form below. The submissions will be reviewed and eventually added to the next releases.</p>
-        <form class="form-horizontal" role="form">
-          <div class="form-group">
-            <label for="submission-word" class="col-lg-1 control-label">Words</label>
-            <div class="col-lg-5">
-              <input type="text" class="form-control" id="submission-words" placeholder="zoidberg">
-              <span class="help-block">One or more comma-separated words which represent the emoticon.</span>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="submission-ascii" class="col-lg-1 control-label">ASCII</label>
-            <div class="col-lg-5">
-              <input type="text" class="form-control" id="submission-ascii" placeholder="(V) (°,,,,°) (V)">
-              <span class="help-block">The actual ASCII emoticon.</span>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="col-lg-offset-1 col-lg-5">
-              <button type="button" class="btn btn-default" id="submission-enter">Submit</button>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="col-lg-offset-1 col-lg-5" id="form-message"></div>
-          </div>
-
-        </form>
+      <div class="row">
+        <a name="releases"></a>
+        <div class="col-lg-4">
+          <h2>Chrome extension</h2>
+          <p>
+            The Chrome extension enables ASCIImoji support for all websites. If
+            you want to use ASCIImoji in your daily browsing experience, install
+            this extension. You can even define your own emoticons!
+          </p>
+          <p>
+            <a
+              class="btn btn-primary"
+              href="https://chrome.google.com/webstore/detail/asciimoji/pglkjdoamcojlfjbdeenodmpkjkgplik"
+              >Install from Chrome Webstore &raquo;</a
+            >
+          </p>
+        </div>
+        <div class="col-lg-4">
+          <h2>jQuery plugin</h2>
+          <p>
+            The jQuery plugin makes it easy for developers to integrate
+            ASCIImoji in their websites or web applications. If you´re
+            developing something and already use jQuery, this is your choice.
+          </p>
+          <p>
+            <a
+              class="btn btn-info"
+              href="https://github.com/hpcodecraft/ASCIImoji"
+              >View at Github &raquo;</a
+            >
+          </p>
+        </div>
+        <div class="col-lg-4">
+          <h2>Javascript source</h2>
+          <p>
+            The plain Javascript source is the foundation of the jQuery plugin
+            and the Chrome extension. If you don´t want to include jQuery or use
+            ASCIImoji only programmatically, this is what you´ll want.
+          </p>
+          <p>
+            <a
+              class="btn btn-info"
+              href="https://github.com/hpcodecraft/ASCIImoji"
+              >View at Github &raquo;</a
+            >
+          </p>
+        </div>
       </div>
+
+      <hr />
+
+      <div class="row">
+        <a name="emoticons"></a>
+        <div class="col-lg-12">
+          <h2>Emoticons</h2>
+          <p>
+            These are the emoticons currently available by default in ASCIImoji.
+          </p>
+          <table class="table table-striped">
+            <thead>
+              <th>You type</th>
+              <th>You get</th>
+            </thead>
+            <tbody id="emoticon-list"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="row">
+        <a name="demo"></a>
+        <div class="col-lg-12">
+          <h2>Demo</h2>
+          <p>Type into the text box and instantly see the results!</p>
+        </div>
+        <div class="col-lg-6">
+          <textarea
+            id="demo-input"
+            class="form-control demo-element"
+            placeholder="Type here"
+          ></textarea>
+        </div>
+        <div class="col-lg-6">
+          <div class="panel panel-default demo-element">
+            <div id="demo-output" class="panel-body"></div>
+          </div>
+        </div>
+      </div>
+
+      <hr />
+
+      <div class="row">
+        <a name="submit"></a>
+        <div class="col-lg-12">
+          <h2>Submit an emoticon</h2>
+          <p>
+            If you know some cool emoticon missing here, please submit it with
+            the form below. The submissions will be reviewed and eventually
+            added to the next releases.
+          </p>
+          <form class="form-horizontal" role="form">
+            <div class="form-group">
+              <label for="submission-word" class="col-lg-1 control-label"
+                >Words</label
+              >
+              <div class="col-lg-5">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="submission-words"
+                  placeholder="zoidberg"
+                />
+                <span class="help-block"
+                  >One or more comma-separated words which represent the
+                  emoticon.</span
+                >
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="submission-ascii" class="col-lg-1 control-label"
+                >ASCII</label
+              >
+              <div class="col-lg-5">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="submission-ascii"
+                  placeholder="(V) (°,,,,°) (V)"
+                />
+                <span class="help-block">The actual ASCII emoticon.</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-lg-offset-1 col-lg-5">
+                <button
+                  type="button"
+                  class="btn btn-default"
+                  id="submission-enter"
+                >
+                  Submit
+                </button>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-lg-offset-1 col-lg-5" id="form-message"></div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <hr />
+
+      <footer>
+        <p class="pull-right" style="margin-top:6px;margin-bottom:22px;">
+          &copy;
+          <a href="http://hpcodecraft.me" target="_blank">hpcodecraft</a>
+          2013-<script>
+            document.write(new Date().getFullYear());
+          </script>
+        </p>
+      </footer>
     </div>
 
-    <hr>
-
-    <footer>
-      <p class="pull-right" style="margin-top:6px;margin-bottom:22px;">
-        &copy; <a href="http://hpcodecraft.me" target="_blank">hpcodecraft</a> 2013-<script>document.write(new Date().getFullYear())</script>
-      </p>
-    </footer>
-  </div>
-
-  <script src="index.min.js"></script>
-</body>
+    <script src="index.min.js"></script>
+    <script>
+      fetch(
+        "https://maker.ifttt.com/trigger/visitor_asciimoji.com/with/key/dSscp_OKcfnlqc4jitN7yc"
+      );
+    </script>
+  </body>
 </html>
