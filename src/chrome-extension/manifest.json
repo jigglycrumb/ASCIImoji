@@ -20,7 +20,6 @@
       "matches": ["<all_urls>"],
       "js": [
         "js/jquery-2.1.1.min.js",
-        "js/asciimoji.js",
         "js/asciimoji.jquery.js",
         "js/script.js"
       ],

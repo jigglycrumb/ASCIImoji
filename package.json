@@ -1,6 +1,6 @@
 {
-  "name": "ASCIImoji",
-  "version": "1.5.0",
+  "name": "asciimoji",
+  "version": "1.6.0",
   "description": "Easy ASCII emoticons",
   "main": "index.js",
   "scripts": {
@@ -15,7 +15,8 @@
     "unicode",
     "emoticon",
     "smiley",
-    "emoji"
+    "emoji",
+    "chat"
   ],
   "author": "Volker Wieban",
   "license": "BEER-WARE",
@@ -32,7 +33,6 @@
     "grunt-contrib-cssmin": "^0.10.0",
     "grunt-contrib-uglify": "^0.6.0",
     "grunt-replace": "^0.8.0",
-    "load-grunt-config": "^0.16.0",
-    "time-grunt": "^1.0.0"
+    "load-grunt-config": "^0.16.0"
   }
 }
