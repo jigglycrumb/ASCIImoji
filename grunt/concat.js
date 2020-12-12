@@ -8,8 +8,8 @@ module.exports = {
     src: [
       "src/homepage/bower_components/jquery/jquery.js",
       "src/homepage/bower_components/bootstrap/dist/js/bootstrap.js",
-      "src/asciimoji.js",
-      "src/jquery/asciimoji.jquery.js",
+      // depends on jquery build
+      "dist/jquery/asciimoji.jquery.js",
       "src/homepage/homepage.js"
     ],
     // the location of the resulting JS file
