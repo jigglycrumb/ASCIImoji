@@ -69,6 +69,10 @@ module.exports = {
       {
         src: "docs/index.html",
         dest: "docs/index.html"
+      },
+      {
+        src: "docs/install.html",
+        dest: "docs/install.html"
       }
     ]
   },
