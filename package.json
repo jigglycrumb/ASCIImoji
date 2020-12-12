@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/hpcodecraft/ASCIImoji.git"
+    "url": "https://github.com/hpcodecraft/asciimoji.git"
   },
   "keywords": [
     "ascii",
@@ -21,9 +21,9 @@
   "author": "Volker Wieban",
   "license": "BEER-WARE",
   "bugs": {
-    "url": "https://github.com/hpcodecraft/ASCIImoji/issues"
+    "url": "https://github.com/hpcodecraft/asciimoji/issues"
   },
-  "homepage": "https://github.com/hpcodecraft/ASCIImoji",
+  "homepage": "https://github.com/hpcodecraft/asciimoji",
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-contrib-clean": "^0.6.0",

@@ -22,8 +22,10 @@ module.exports = {
     src: [
       // "googlea7755739bc343761.html",
       "index.html",
+      "install.html",
       "images/icon-16.png",
-      "images/header.png"
+      "images/header.png",
+      "images/macos-dictionary-installtion-*.png"
     ],
     dest: "docs/"
   },

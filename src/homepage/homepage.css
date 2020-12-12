@@ -28,3 +28,11 @@ h1 {
   padding-right: 30px;
   padding-left: 30px;
 }
+
+.release-description {
+  min-height: 70px;
+}
+
+.install img {
+  max-width: 700px;
+}
