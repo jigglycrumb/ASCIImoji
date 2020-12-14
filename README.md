@@ -1,20 +1,26 @@
 # ASCIImoji
 
-ASCIImoji is a small JavaScript function enabling ASCII emoticons in text inputs.
+ASCIImoji is a small library which replaces certain keywords in texts with ASCII emoticons.
 
 **Features**
 
-- support for currently 296 different built-in emoticons/symbols
-- support for interactive emoticons with arguments
-- support for additional custom emoticons
-- configurable keyword delimiters (_defaults to parentheses ( )_)
-- jQuery plugin
+- currently **296** different built-in emoticons/symbols
+- interactive emoticons / generators
+- configurable keyword prefix and suffix (_defaults to parentheses ( )_)
+- support for custom emoticons
 
-Current version: 1.5.0
+Current version: **1.6.0**
 
-## Basic usage
+**Release types**
 
-Feed it some text and the processed string gets returned.
+- [vanilla JS function]((https://github.com/hpcodecraft/asciimoji/blob/master/dist/js/asciimoji.js))
+- [jQuery plugin](https://github.com/hpcodecraft/asciimoji/blob/master/dist/jquery/asciimoji.jquery.js) for text fields in your projects
+- [Chrome Extension](https://chrome.google.com/webstore/detail/asciimoji/pglkjdoamcojlfjbdeenodmpkjkgplik) to asciify your browsing experience
+- [Mac OS text shortcut dictionary]((https://github.com/hpcodecraft/asciimoji/blob/master/dist/macos-dictionary/asciimoji.plist)) to enable system-wide support on Macs (generators are not supported though)
+
+## Using the JS function
+
+Just feed it some text and the processed string gets returned:
 
     var asciifiedText = asciimoji('Hello, this is (bear)');
     // Hello, this is ʕ·͡ᴥ·ʔ
@@ -67,5 +73,3 @@ or with the jQuery plugin:
     $(document).on('focus', 'textarea', function() {
       $(this).asciimoji(options, myEmoticons);
     });
-
-If you're using Google Chrome, you can also asciify your browsing experience by getting the extension from the [Chrome Web Store](https://chrome.google.com/webstore/detail/asciimoji/pglkjdoamcojlfjbdeenodmpkjkgplik)

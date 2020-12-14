@@ -4,19 +4,19 @@ module.exports = {
   },
   js: {
     expand: true,
-    cwd: "src",
+    cwd: "dist/js",
     src: ["asciimoji.js"],
     ext: ".min.js",
     extDot: "last",
-    dest: "dist/"
+    dest: "dist/js"
   },
   jquery: {
     expand: true,
-    cwd: "src/jquery",
+    cwd: "dist/jquery",
     src: ["asciimoji.jquery.js"],
     ext: ".min.js",
     extDot: "last",
-    dest: "dist/jquery/"
+    dest: "dist/jquery"
   },
   homepage: {
     src: "docs/index.js",

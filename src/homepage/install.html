@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="author" content="@@author" />
+  <meta name="description" content="ASCII emoticons." />
+  <meta name="keywords" content="ascii, emoticon, smiley, emoji, chat, messaging, js, javascript, jquery" />
+
+  <title>ASCIImoji</title>
+  <link rel="icon" type="image/png" href="images/icon-16.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="index.min.css" />
+</head>
+
+<body>
+  <header>
+    <div class="container padded">
+      <img src="images/header.png" class="site-logo" alt="ASCIImoji" />
+      <h1>ASCII emoticons.</h1>
+    </div>
+  </header>
+
+  <div class="container padded">
+    <div class="col-lg-12 install">
+      <h2>Installation</h2>
+      <h4>Mac OS text shortcuts</h4>
+      <p>
+        To install the Mac OS text shortcuts, first download the <strong>asciimoji.plist</strong> file from Github.
+        <br />
+        Then open System Preferences, go to Keyboard and click the tab <strong>Text</strong>. You should see something like this:
+      </p>
+      <img src="images/macos-dictionary-installation-empty.png" />
+      <p>
+        Now drag <strong>asciimoji.plist</strong> from the Finder into the list on the left (if you already had your own replacements they will be kept):
+      </p>
+      <img src="images/macos-dictionary-installation-copy.png" />
+      <p>
+        You're done! Start using ASCIImoji by typing any of the shortcuts in the left column and confirm with space.
+      </p>
+      <img src="images/macos-dictionary-installation-done.png" />
+      <br />
+      <a class="btn btn-primary" href="..">&laquo; Back to main page</a>
+    </div>
+
+    <hr />
+
+    <footer>
+      <p class="pull-right" style="margin-top:6px;margin-bottom:22px;">
+        &copy;
+        <a href="http://hpcodecraft.me" target="_blank">hpcodecraft</a>
+        2013 -
+        <script>
+          document.write(new Date().getFullYear());
+        </script>
+      </p>
+    </footer>
+  </div>
+
+  <script>
+    var site = "asciimoji.com";
+
+    fetch(
+      "https://maker.ifttt.com/trigger/visitor_" +
+      site +
+      "/with/key/dSscp_OKcfnlqc4jitN7yc?value1=" +
+      site +
+      "&value2=" +
+      document.location.href +
+      "&value3=" +
+      (document.referrer || "unknown"),
+      { mode: "no-cors" }
+    );
+  </script>
+</body>
+
+</html>
