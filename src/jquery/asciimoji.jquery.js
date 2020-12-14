@@ -1,5 +1,15 @@
-// asciimoji jQuery plugin
-(function($, window, document, asciimoji, undefined) {
+
+// @@asciimoji
+
+/*
+  ASCIImoji jQuery plugin
+  Version: @@version
+
+  By @@author
+  http://asciimoji.com
+*/
+
+(function($, window, document, asciimoji) {
   var pluginName = "asciimoji",
     defaults = {
       prefix: "(",

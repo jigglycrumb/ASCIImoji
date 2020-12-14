@@ -1,17 +1,4 @@
-/* Copy various files */
 module.exports = {
-  js: {
-    expand: true,
-    cwd: "src",
-    src: ["asciimoji.js"],
-    dest: "dist/"
-  },
-  jquery: {
-    expand: true,
-    cwd: "src/jquery",
-    src: ["asciimoji.jquery.js"],
-    dest: "dist/jquery"
-  },
   chromeExtension: {
     files: [
       {
@@ -20,10 +7,11 @@ module.exports = {
         src: ["images/*", "js/*", "options/*", "manifest.json", "key.pem"],
         dest: "dist/chrome-extension"
       },
+      // depends on jQuery build
       {
         expand: true,
         flatten: true,
-        src: ["src/asciimoji.js", "src/jquery/asciimoji.jquery.js"],
+        src: ["dist/js/asciimoji.js", "dist/jquery/asciimoji.jquery.js"],
         dest: "dist/chrome-extension/js/"
       }
     ]
@@ -34,21 +22,11 @@ module.exports = {
     src: [
       // "googlea7755739bc343761.html",
       "index.html",
+      "install.html",
       "images/icon-16.png",
-      "images/header.png"
+      "images/header.png",
+      "images/macos-dictionary-installation-*.png"
     ],
     dest: "docs/"
   },
-  homepageRelease: {
-    expand: true,
-    cwd: "docs",
-    src: [
-      "index.html",
-      "images/icon-16.png",
-      "images/header.png",
-      "index.min.css",
-      "index.min.js"
-    ],
-    dest: "docs/"
-  }
 };
