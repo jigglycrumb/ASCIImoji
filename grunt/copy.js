@@ -25,7 +25,7 @@ module.exports = {
       "install.html",
       "images/icon-16.png",
       "images/header.png",
-      "images/macos-dictionary-installtion-*.png"
+      "images/macos-dictionary-installation-*.png"
     ],
     dest: "docs/"
   },
