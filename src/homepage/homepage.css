@@ -29,8 +29,12 @@ h1 {
   padding-left: 30px;
 }
 
+.release {
+  margin-bottom: 3em;
+}
+
 .release-description {
-  min-height: 70px;
+  min-height: 65px;
 }
 
 .install img {

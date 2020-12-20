@@ -13,10 +13,12 @@ Current version: **1.6.0**
 
 **Release types**
 
-- [vanilla JS function]((https://github.com/hpcodecraft/asciimoji/blob/master/dist/js/asciimoji.js))
-- [jQuery plugin](https://github.com/hpcodecraft/asciimoji/blob/master/dist/jquery/asciimoji.jquery.js) for text fields in your projects
-- [Chrome Extension](https://chrome.google.com/webstore/detail/asciimoji/pglkjdoamcojlfjbdeenodmpkjkgplik) to asciify your browsing experience
-- [Mac OS text shortcut dictionary]((https://github.com/hpcodecraft/asciimoji/blob/master/dist/macos-dictionary/asciimoji.plist)) to enable system-wide support on Macs (generators are not supported though)
+- [vanilla JS function](https://github.com/hpcodecraft/ASCIImoji/releases/download/1.6.0/asciimoji.js) | [minified](https://github.com/hpcodecraft/ASCIImoji/releases/download/1.6.0/asciimoji.min.js)
+- [jQuery plugin](https://github.com/hpcodecraft/ASCIImoji/releases/download/1.6.0/asciimoji.jquery.js) | [minified](https://github.com/hpcodecraft/ASCIImoji/releases/download/1.6.0/asciimoji.jquery.min.js) - for text fields in your projects
+- [Chrome Extension](https://chrome.google.com/webstore/detail/asciimoji/pglkjdoamcojlfjbdeenodmpkjkgplik) - asciify your browsing experience
+- [Mac OS text shortcut dictionary](https://github.com/hpcodecraft/ASCIImoji/releases/download/1.6.0/asciimoji.plist) - system-wide support on Macs and iOS
+
+  (generators are not supported though)
 
 ## Using the JS function
 
