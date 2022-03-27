@@ -8,6 +8,12 @@ grunt replace:dictionary # create temp copy of build script and inject dictionar
 node ./$TMP_BUILD_SCRIPT # run temp build script
 rm ./$TMP_BUILD_SCRIPT   # remove temp build script
 
+# build text file
+TMP_BUILD_SCRIPT="dist/text-file/build.js"
+grunt replace:textfile   # create temp copy of build script and inject dictionary
+node ./$TMP_BUILD_SCRIPT # run temp build script
+rm ./$TMP_BUILD_SCRIPT   # remove temp build script
+
 # build js source
 grunt replace:js # inject dictionary
 grunt uglify:js  # create minified build

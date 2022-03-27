@@ -75,3 +75,10 @@ or with the jQuery plugin:
     $(document).on('focus', 'textarea', function() {
       $(this).asciimoji(options, myEmoticons);
     });
+
+## Development
+
+Packages are managed with NPM.
+
+Build is done using Grunt.  
+To build, run: `./scripts/build.sh`
