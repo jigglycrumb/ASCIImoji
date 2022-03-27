@@ -125,6 +125,12 @@
     </dict>
     <dict>
         <key>phrase</key>
+        <string>₿</string>
+        <key>shortcut</key>
+        <string>(bitcoin)</string>
+    </dict>
+    <dict>
+        <key>phrase</key>
         <string>0__#</string>
         <key>shortcut</key>
         <string>(blackeye)</string>
