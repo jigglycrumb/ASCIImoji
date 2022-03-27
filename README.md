@@ -54,6 +54,8 @@ You can also do live binding so that elements added to the DOM later will have A
       $(this).asciimoji();
     });
 
+Note: The jQuery plugin does not include the emoticon dictionary. To use the plugin you'll have to include both scripts into your page, the JS function and the jQuery plugin.
+
 ## Adding custom emoticons to the dictionary
 
 Define your dictionary like this:
