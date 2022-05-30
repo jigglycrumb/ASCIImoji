@@ -2,7 +2,7 @@
 // 
 /*
   ASCIImoji JS
-  Version: 1.6.0
+  Version: 1.6.1
 
   By Volker Wieban
   http://asciimoji.com
@@ -574,7 +574,7 @@ var dictionary = {
 
 /*
   ASCIImoji jQuery plugin
-  Version: 1.6.0
+  Version: 1.6.1
 
   By Volker Wieban
   http://asciimoji.com
