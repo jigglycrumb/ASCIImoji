@@ -1,13 +1,12 @@
-
 /*
   ASCIImoji JS
   Version: @@version
 
   By @@author
-  http://asciimoji.com
+  https://asciimoji.com
 */
 
-var asciimoji = function(text, options, userDictionary) {
+var asciimoji = function (text, options, userDictionary) {
   "use strict";
 
   function getRandomInt(min, max) {
@@ -16,7 +15,7 @@ var asciimoji = function(text, options, userDictionary) {
 
   var o = options || {
     prefix: "(",
-    suffix: ")"
+    suffix: ")",
   };
 
   function transpose(str, table, backwards) {
@@ -59,7 +58,7 @@ var asciimoji = function(text, options, userDictionary) {
         "[" + o.prefix + "]([^" + o.suffix + "]*)[" + o.suffix + "]",
         "gim"
       ),
-      function(termWithDelimiters, term) {
+      function (termWithDelimiters, term) {
         var params = null;
 
         if (term.indexOf(",") !== -1) {

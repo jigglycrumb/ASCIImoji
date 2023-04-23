@@ -3,7 +3,7 @@
   ASCIImoji JS
   Version: 1.6.1
 
-  http://asciimoji.com
+  https://asciimoji.com
 */
 
 var asciimoji = function (text, options, userDictionary) {
@@ -572,7 +572,7 @@ var asciimoji = function (text, options, userDictionary) {
   ASCIImoji jQuery plugin
   Version: 1.6.1
 
-  http://asciimoji.com
+  https://asciimoji.com
 */
 
 (function ($, window, document, asciimoji) {

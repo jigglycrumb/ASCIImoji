@@ -2,7 +2,7 @@
   ASCIImoji JS
   Version: 1.6.1
 
-  http://asciimoji.com
+  https://asciimoji.com
 */
 
 var asciimoji = function (text, options, userDictionary) {

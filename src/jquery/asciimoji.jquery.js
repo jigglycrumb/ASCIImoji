@@ -1,4 +1,3 @@
-
 // @@asciimoji
 
 /*
@@ -6,14 +5,14 @@
   Version: @@version
 
   By @@author
-  http://asciimoji.com
+  https://asciimoji.com
 */
 
-(function($, window, document, asciimoji) {
+(function ($, window, document, asciimoji) {
   var pluginName = "asciimoji",
     defaults = {
       prefix: "(",
-      suffix: ")"
+      suffix: ")",
     };
 
   function Plugin(element, options, dictionary) {
@@ -26,7 +25,7 @@
   }
 
   Plugin.prototype = {
-    getCaret: function(el) {
+    getCaret: function (el) {
       var input = el.get(0);
       if (!input) return;
       if ("selectionStart" in input) {
@@ -40,7 +39,7 @@
         return sel.text.length - selLen;
       }
     },
-    setCaret: function(el, position) {
+    setCaret: function (el, position) {
       var input = el.get(0);
       if (input !== null) {
         if (input.createTextRange) {
@@ -50,7 +49,7 @@
         } else {
           if (input.selectionStart) {
             input.focus();
-            window.setTimeout(function() {
+            window.setTimeout(function () {
               // timeout needed because of Chrome bug, see
               // https://code.google.com/p/chromium/issues/detail?id=32865
               input.setSelectionRange(position, position);
@@ -59,7 +58,7 @@
         }
       }
     },
-    lastDiff: function(string1, string2) {
+    lastDiff: function (string1, string2) {
       var len = Math.min(string1.length, string2.length),
         lastDiff = len,
         char1,
@@ -83,7 +82,7 @@
         node = node.nextSibling;
       }
     },
-    init: function() {
+    init: function () {
       var plugin = this,
         el = $(this.element),
         options = this.options,
@@ -98,7 +97,7 @@
       switch (tagName) {
         case "input":
         case "textarea":
-          el.off(triggerEvents).on(triggerEvents, function(e) {
+          el.off(triggerEvents).on(triggerEvents, function (e) {
             oldValue = el.val();
             newValue = asciimoji(oldValue, options, dictionary);
             if (oldValue != newValue) {
@@ -113,9 +112,9 @@
           break;
         default:
           el.data({
-            watch_timer: setInterval(function() {
+            watch_timer: setInterval(function () {
               var elDOM = el.get(0);
-              plugin.walkTheDom(elDOM, function(node) {
+              plugin.walkTheDom(elDOM, function (node) {
                 if (node.nodeType == 3) {
                   oldValue = node.nodeValue;
                   newValue = asciimoji(oldValue, options, dictionary);
@@ -149,15 +148,15 @@
                   }
                 }
               });
-            }, 100)
+            }, 100),
           });
           break;
       }
-    }
+    },
   };
 
-  $.fn[pluginName] = function(options, dictionary) {
-    return this.each(function() {
+  $.fn[pluginName] = function (options, dictionary) {
+    return this.each(function () {
       if (!$.data(this, "plugin_" + pluginName)) {
         $.data(
           this,
