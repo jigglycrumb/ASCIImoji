@@ -21,7 +21,7 @@ module.exports = {
     cwd: "src/homepage",
     src: [
       // "googlea7755739bc343761.html",
-      "homepage.js",
+      // "homepage.js",
       "index.html",
       "install.html",
       "images/icon-16.png",

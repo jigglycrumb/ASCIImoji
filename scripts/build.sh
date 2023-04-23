@@ -35,6 +35,6 @@ grunt replace:homepage # inject version and author
 grunt concat:homepage  # copy & concat homepage scripts
 # grunt uglify:homepage  # minify homepage script
 grunt cssmin:homepage # copy & minify homepage css
-rm ./docs/index.js    # remove unminified script
+# rm ./docs/index.js    # remove unminified script
 
 echo "All done!"
