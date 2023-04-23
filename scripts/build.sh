@@ -16,11 +16,11 @@ rm ./$TMP_BUILD_SCRIPT   # remove temp build script
 
 # build js source
 grunt replace:js # inject dictionary
-grunt uglify:js  # create minified build
+# grunt uglify:js  # create minified build
 
 # build jquery plugin
 grunt replace:jquery # inject dictionary
-grunt uglify:jquery  # create minified build
+# grunt uglify:jquery  # create minified build
 
 # build chrome extension
 grunt copy:chromeExtension     # copy files to dist
@@ -33,8 +33,8 @@ grunt clean:homepage   # clean docs folder
 grunt copy:homepage    # copy images and html files
 grunt replace:homepage # inject version and author
 grunt concat:homepage  # copy & concat homepage scripts
-grunt uglify:homepage  # minify homepage script
-grunt cssmin:homepage  # copy & minify homepage css
-rm ./docs/index.js     # remove unminified script
+# grunt uglify:homepage  # minify homepage script
+grunt cssmin:homepage # copy & minify homepage css
+rm ./docs/index.js    # remove unminified script
 
 echo "All done!"

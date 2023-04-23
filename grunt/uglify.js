@@ -1,14 +1,14 @@
 module.exports = {
-  options: {
-    banner: ""
-  },
+  // options: {
+  //   banner: ""
+  // },
   js: {
     expand: true,
     cwd: "dist/js",
     src: ["asciimoji.js"],
     ext: ".min.js",
     extDot: "last",
-    dest: "dist/js"
+    dest: "dist/js",
   },
   jquery: {
     expand: true,
@@ -16,10 +16,10 @@ module.exports = {
     src: ["asciimoji.jquery.js"],
     ext: ".min.js",
     extDot: "last",
-    dest: "dist/jquery"
+    dest: "dist/jquery",
   },
   homepage: {
     src: "docs/index.js",
-    dest: "docs/index.min.js"
-  }
+    dest: "docs/index.min.js",
+  },
 };
