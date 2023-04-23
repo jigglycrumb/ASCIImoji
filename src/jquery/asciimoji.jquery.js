@@ -4,7 +4,6 @@
   ASCIImoji jQuery plugin
   Version: @@version
 
-  By @@author
   https://asciimoji.com
 */
 

@@ -10,7 +10,6 @@ var content = `<?xml version="1.0" encoding="UTF-8"?>
     ASCIImoji keyboard shortcuts for Mac OS
     Version: @@version
 
-    By @@author
     https://asciimoji.com
 -->
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">

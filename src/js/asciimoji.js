@@ -2,7 +2,6 @@
   ASCIImoji JS
   Version: @@version
 
-  By @@author
   https://asciimoji.com
 */
 
