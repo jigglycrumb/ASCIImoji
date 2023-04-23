@@ -23,10 +23,10 @@ grunt replace:jquery # inject dictionary
 # grunt uglify:jquery  # create minified build
 
 # build chrome extension
-grunt copy:chromeExtension     # copy files to dist
-grunt replace:chromeExtension  # inject version to manifest.json
-grunt compress:chromeExtension # create zip file in release folder
-grunt clean:chromeExtension    # remove chrome extension build files from dist
+# grunt copy:chromeExtension     # copy files to dist
+# grunt replace:chromeExtension  # inject version to manifest.json
+# grunt compress:chromeExtension # create zip file in release folder
+# grunt clean:chromeExtension    # remove chrome extension build files from dist
 
 # build homepage
 grunt clean:homepage   # clean docs folder

@@ -1,8 +1,8 @@
 module.exports = {
   options: {
     separator: "\n", //add a new line after each file
-    banner: "", //added before everything
-    footer: "" //added after everything
+    // banner: "", //added before everything
+    // footer: "" //added after everything
   },
   homepage: {
     src: [
@@ -10,9 +10,9 @@ module.exports = {
       "src/homepage/bower_components/bootstrap/dist/js/bootstrap.js",
       // depends on jquery build
       "dist/jquery/asciimoji.jquery.js",
-      "src/homepage/homepage.js"
+      "src/homepage/homepage.js",
     ],
     // the location of the resulting JS file
-    dest: "docs/index.js"
-  }
+    dest: "docs/index.js",
+  },
 };

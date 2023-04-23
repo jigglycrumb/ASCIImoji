@@ -1,5 +1,3 @@
-// @@asciimoji
-
 /*
   ASCIImoji jQuery plugin
   Version: @@version

@@ -3,7 +3,7 @@ module.exports = {
     options: {
       patterns: [
         { match: "version", replacement: "<%= package.version %>" },
-        { match: "author", replacement: "<%= package.author %>" },
+        // { match: "author", replacement: "<%= package.author %>" },
         {
           match: "dictionary",
           replacement: '<%= grunt.file.read("src/dictionary.js") %>',
@@ -21,7 +21,7 @@ module.exports = {
     options: {
       patterns: [
         { match: "version", replacement: "<%= package.version %>" },
-        { match: "author", replacement: "<%= package.author %>" },
+        // { match: "author", replacement: "<%= package.author %>" },
         {
           match: "dictionary",
           replacement: '<%= grunt.file.read("src/dictionary.js") %>',
@@ -39,7 +39,7 @@ module.exports = {
     options: {
       patterns: [
         { match: "version", replacement: "<%= package.version %>" },
-        { match: "author", replacement: "<%= package.author %>" },
+        // { match: "author", replacement: "<%= package.author %>" },
         {
           match: "dictionary",
           replacement: '<%= grunt.file.read("src/dictionary.js") %>',
@@ -57,7 +57,7 @@ module.exports = {
     options: {
       patterns: [
         { match: "version", replacement: "<%= package.version %>" },
-        { match: "author", replacement: "<%= package.author %>" },
+        // { match: "author", replacement: "<%= package.author %>" },
         // the next one depends on replace:js been run before
         {
           match: "asciimoji",
@@ -87,7 +87,7 @@ module.exports = {
     options: {
       patterns: [
         { match: "version", replacement: "<%= package.version %>" },
-        { match: "author", replacement: "<%= package.author %>" },
+        // { match: "author", replacement: "<%= package.author %>" },
       ],
     },
     files: [
