@@ -9,6 +9,7 @@ module.exports = {
       "src/homepage/bower_components/jquery/jquery.js",
       "src/homepage/bower_components/bootstrap/dist/js/bootstrap.js",
       // depends on jquery build
+      "dist/js/asciimoji.js",
       "dist/jquery/asciimoji.jquery.js",
       "src/homepage/homepage.js",
     ],
