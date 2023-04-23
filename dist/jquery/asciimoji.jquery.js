@@ -2,7 +2,6 @@
   ASCIImoji JS
   Version: 1.6.1
 
-  By 
   https://asciimoji.com
 */
 
@@ -574,7 +573,6 @@ var dictionary = {
   ASCIImoji jQuery plugin
   Version: 1.6.1
 
-  By 
   https://asciimoji.com
 */
 
