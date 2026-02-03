@@ -2,6 +2,13 @@
 
 ASCIImoji is a small library which replaces certain keywords in texts with ASCII emoticons.
 
+# NOTE
+
+This repository moved to Codeberg.
+
+New repo: https://codeberg.org/jiggly/asciimoji
+
+
 **Features**
 
 - currently **296** different built-in emoticons/symbols
